@@ -1019,10 +1019,16 @@
 
     // ── MESSAGES ──
     const privateChats = [
-      { id: 'mum', name: 'Mum', bg: '#d4f0d8', col: '#3a7a4a', init: 'M', msgs: [{ s: 'them', t: 'Hey sweetheart! 👋' }, { s: 'them', t: 'Did you eat yet? 🍱' }, { s: 'me', t: 'Yes mum lol 😅' }, { s: 'them', t: 'Good! Love you ❤️' }] },
-      { id: 'jamie', name: 'Jamie', bg: '#d4e8ff', col: '#2a60c8', init: 'J', msgs: [{ s: 'me', t: 'u coming tmr?' }, { s: 'them', t: 'yeah for sure 👍' }, { s: 'them', t: 'haha ok ok see u tmr' }] },
-      { id: 'sara', name: 'Sara', bg: '#f0d4ff', col: '#7040b0', init: 'S', msgs: [{ s: 'them', t: 'that café was amazing' }, { s: 'me', t: 'right?? we need to go back' }, { s: 'them', t: 'the coffee was SO good ☕' }] },
+      {
+        id: 't-family', name: 'The T Family 😎💕', bg: '#d4f0d8', col: '#3a7a4a', init: '<img class="avatar" src="assets/images/family_pic.png">',
+        msgs: [{ s: 'them', t: 'Hey sweetheart! 👋' }, { s: 'them', t: 'Did you eat yet? 🍱' }, { s: 'me', t: 'Yes mum lol 😅' }, { s: 'them', t: 'Good! Love you ❤️' }]
+      },
+      {
+        id: 'amy', name: 'Amy', bg: '#d4e8ff', col: '#2a60c8', init: '<img class="avatar" src="assets/images/friend_pic.png">',
+        msgs: [{ s: 'me', t: 'u coming tmr?' }, { s: 'them', t: 'yeah for sure 👍' }, { s: 'them', t: 'haha ok ok see u tmr' }]
+      },
     ];
+    
     const GB = 'guestbook';
     let currentChatId = null;
 
