@@ -899,7 +899,9 @@
       </div>
       <div class="chat-window" id="chat-window">
         <div class="chat-header">
-          <div class="back-btn" onclick="closeChat()">← Back</div>
+          <div class="back-btn" onclick="closeChat()">
+            <img class="back-btn-img" id="back-btn-img" src="assets/images/back2.png">
+          </div>
           <div class="avatar" id="chat-avatar" style="background:#d4f0d8;color:#3a7a4a;">M</div>
           <div class="app-title-h" id="chat-name" style="font-size:clamp(20px,3.5vw,30px);">Mum</div>
         </div>
@@ -1059,7 +1061,7 @@
 
     function buildMsgThread() {
       const w = document.getElementById('msg-thread'); w.innerHTML = '';
-      const all = [...privateChats, { id: GUESTBOOK_ID, name: 'Dear Home', bg: '#ffd4e8', col: '#a03060', init: '<img class="avatar" src="assets/images/dear_home.png">', isGuest: true }];
+      const all = [...privateChats, { id: GB, name: 'Dear Home', bg: '#ffd4e8', col: '#a03060', init: '<img class="avatar" src="assets/images/dear_home.png">', isGuest: true }];
       all.forEach(c => {
         const prev = c.isGuest ? 'Loading…' : c.msgs[c.msgs.length - 1].t;
         const d = document.createElement('div'); d.className = 'msg-contact doodle-border';
@@ -1081,14 +1083,14 @@
       const box = document.getElementById('chat-messages'); box.innerHTML = '';
       let name, bg, col, init;
       if (isGuest) {
-        name = 'Guestbook 📖'; bg = '#ffd4e8'; col = '#a03060'; init = 'G';
+        name = 'Dear Home'; bg = '#ffd4e8'; col = '#a03060'; init = '<img class="avatar" src="assets/images/dear_home.png">';
         box.innerHTML = '<div style="text-align:center;padding:12px 16px;font-size:clamp(13px,2.2vw,17px);color:#8a7a5e;background:#fff8f0;border-radius:14px;margin-bottom:10px;line-height:1.6;">Leave a message for everyone to see! 🌸</div>';
         const msgs = await fetchGuestMsgs();
         msgs.forEach(m => {
           const b = document.createElement('div'); b.className = 'bubble guest'; b.textContent = m.t; box.appendChild(b);
           const meta = document.createElement('div'); meta.className = 'bubble-meta'; meta.textContent = (m.name || 'Anonymous') + ' · ' + m.time; box.appendChild(meta);
         });
-        document.getElementById('name-row').style.display = 'flex';
+        document.getElementById('name-row').style.display = 'none';
         document.getElementById('chat-input').placeholder = 'Write your message…';
       } else {
         const c = privateChats.find(x => x.id === id); name = c.name; bg = c.bg; col = c.col; init = c.init;
@@ -1097,7 +1099,10 @@
         document.getElementById('chat-input').placeholder = 'Type a message…';
       }
       document.getElementById('chat-name').textContent = name;
-      const av = document.getElementById('chat-avatar'); av.textContent = init; av.style.background = bg; av.style.color = col;
+      const av = document.getElementById('chat-avatar');
+      av.innerHTML = init;
+      av.style.background = bg;
+      av.style.color = col;
       box.scrollTop = box.scrollHeight;
       document.getElementById('msgs-list-view').style.display = 'none';
       document.getElementById('chat-window').classList.add('open');
