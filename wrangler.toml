@@ -2,7 +2,7 @@
 # Cloudflare Pages project configuration
 # Place this file in the root of your project folder
 
-name = "home-sick"
+name = "homesick"
 pages_build_output_dir = "."   # your HTML is in the root, not a build folder
 compatibility_date = "2024-09-23"
 
