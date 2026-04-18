@@ -1,0 +1,21 @@
+# wrangler.toml
+# Cloudflare Pages project configuration
+# Place this file in the root of your project folder
+
+name = "home-sick"
+pages_build_output_dir = "."   # your HTML is in the root, not a build folder
+compatibility_date = "2024-09-23"
+
+# ── KV NAMESPACE — for guestbook messages ──
+# After creating the KV namespace in the Cloudflare dashboard,
+# paste its ID below (found in Workers & Pages → KV → your namespace)
+[[kv_namespaces]]
+binding = "GUESTBOOK"         # must match the name used in functions/api/guestbook.js
+id = "7a31e6ee1c414332b13fe7f6474f23d0"  # ← replace this
+
+# ── R2 BUCKET — for photos and videos ──
+# After creating the R2 bucket in the Cloudflare dashboard,
+# paste its name below
+[[r2_buckets]]
+binding = "MEDIA_BUCKET"         # must match the name used in functions/api/media.js
+bucket_name = "homesick-media"  # ← replace with your actual bucket name
