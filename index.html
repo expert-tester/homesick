@@ -1028,7 +1028,7 @@
         msgs: [{ s: 'me', t: 'u coming tmr?' }, { s: 'them', t: 'yeah for sure 👍' }, { s: 'them', t: 'haha ok ok see u tmr' }]
       },
     ];
-    
+
     const GB = 'guestbook';
     let currentChatId = null;
 
@@ -1059,7 +1059,7 @@
 
     function buildMsgThread() {
       const w = document.getElementById('msg-thread'); w.innerHTML = '';
-      const all = [...privateChats, { id: GB, name: 'Guestbook 📖', bg: '#ffd4e8', col: '#a03060', init: 'G', isGuest: true }];
+      const all = [...privateChats, { id: GUESTBOOK_ID, name: 'Dear Home', bg: '#ffd4e8', col: '#a03060', init: '<img class="avatar" src="assets/images/dear_home.png">', isGuest: true }];
       all.forEach(c => {
         const prev = c.isGuest ? 'Loading…' : c.msgs[c.msgs.length - 1].t;
         const d = document.createElement('div'); d.className = 'msg-contact doodle-border';
