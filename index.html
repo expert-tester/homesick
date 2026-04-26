@@ -90,7 +90,7 @@
       font-family: 'TrilHandwriting';
       font-size: clamp(64px, 12vw, 110px);
       font-weight: 700;
-      color: #2d2416;
+      color: #000000;
       line-height: 1;
       text-shadow: 3px 3px 0 rgba(180, 140, 60, .18);
     }
@@ -98,7 +98,7 @@
     .clock-date {
       font-family: 'TrilHandwriting';
       font-size: clamp(26px, 3.0vw, 33px);
-      color: #6b5a3e;
+      color: #000000;
       margin-top: 4px;
       letter-spacing: .5px;
     }
@@ -157,7 +157,7 @@
     .app-label {
       font-family: 'TrilHandwriting';
       font-size: clamp(13px, 2.4vw, 19px);
-      color: #3d2e1a;
+      color: #000000;
       text-align: center;
       text-shadow: 0 1px 3px rgba(255, 255, 255, .9);
     }
@@ -179,7 +179,7 @@
     .app-header {
       display: flex;
       align-items: center;
-      padding: clamp(13px, 2.4vh, 22px) 20px clamp(10px, 1.8vh, 16px);
+      padding: 18px 16px;
       /* border-bottom: 2.5px solid #d4c4a0; */
       background: #ffffff;
       gap: 14px;
@@ -189,7 +189,7 @@
     .back-btn {
       font-family: 'TrilHandwriting';
       font-size: clamp(15px, 2vw, 25px);
-      color: #6b5a3e;
+      color: #000000;
       cursor: pointer;
       padding: 5px 14px;
       background: #ffffff;
@@ -210,7 +210,7 @@
       font-family: 'TrilHandwriting';
       font-size: clamp(26px, 4.8vw, 40px);
       font-weight: 700;
-      color: #2d2416;
+      color: #000000;
       flex: 1;
     }
 
@@ -229,6 +229,7 @@
       border-radius: 4px;
     }
 
+    /* MESSAGES */
     /* MESSAGES */
     .msg-contact {
       display: flex;
@@ -265,19 +266,20 @@
       font-size: clamp(18px, 3vw, 24px);
       font-weight: 700;
       flex-shrink: 0;
-      border: 2.5px solid #000000;
+      /* border: 2.5px solid #000000; */
+      transform: scale(1.2);
     }
 
     .contact-name {
       font-family: 'TrilHandwriting';
       font-size: clamp(16px, 2.8vw, 22px);
-      color: #2d2416;
+      color: #000000;
       font-weight: 600;
     }
 
     .contact-preview {
       font-size: clamp(13px, 2.2vw, 17px);
-      color: #8a7a5e;
+      color: #000000;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -297,56 +299,122 @@
       display: flex;
     }
 
+    /* Header with call icons */
     .chat-header {
       display: flex;
       align-items: center;
-      gap: 14px;
-      padding: clamp(13px, 2.2vh, 20px) 18px;
+      gap: 1vw;
+      padding: 18px 16px;
       /* border-bottom: 2px solid #d4c4a0; */
       background: #ffffff;
       flex-shrink: 0;
     }
 
+    .chat-call-btns {
+      display: flex;
+      gap: 8px;
+      margin-left: auto;
+      flex-shrink: 0;
+    }
+
+    .call-btn {
+      width: clamp(36px, 5.5vw, 48px);
+      height: clamp(36px, 5.5vw, 48px);
+      border-radius: 50%;
+      border: 2px solid #000000;
+      background: #ffffff;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: clamp(16px, 2.8vw, 22px);
+      transition: background .15s, transform .1s;
+      flex-shrink: 0;
+    }
+
+    .call-btn-img {
+      height: 2em;
+      width: 2em;
+      object-fit: contain;
+      vertical-align: middle;
+    }
+
+    .call-btn:hover {
+      background: #ffffff;
+      transform: scale(1.08);
+    }
+
+    .call-btn:active {
+      transform: scale(.93);
+    }
+
+    /* Message list */
     .chat-messages {
       flex: 1;
       overflow-y: auto;
       padding: 18px;
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 1vw;
     }
 
-    .bubble {
+    .chat-img-viewer {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      background: rgba(15, 10, 5, .94);
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .chat-img-viewer.open {
+      display: flex;
+    }
+
+    .chat-img-viewer img {
+      max-width: 92vw;
+      max-height: 82vh;
+      border-radius: 16px;
+      object-fit: contain;
+    }
+
+    .chat-img-viewer-close {
+      position: absolute;
+      top: 16px;
+      right: 18px;
+      font-family: 'TrilHandwriting';
+      font-size: clamp(14px, 2.5vw, 18px);
+      color: #fff;
+      cursor: pointer;
+      padding: 7px 20px;
+    }
+
+    /* Bubble wrapper — holds sender label + bubble + timestamp */
+    .bubble-wrap {
+      display: flex;
+      flex-direction: column;
       max-width: 74%;
-      padding: clamp(11px, 2vh, 16px) clamp(16px, 3.2vw, 24px);
-      border-radius: 24px;
-      font-size: clamp(15px, 2.6vw, 20px);
-      line-height: 1.5;
     }
 
-    .bubble.them {
-      background: #ffffff;
-      /* border: 2px solid #c8b890; */
-      color: #000000;
-      align-self: flex-start;
-      border-bottom-left-radius: 4px;
-    }
-
-    .bubble.me {
-      background: #ffffff;
-      /* border: 2px solid #3a6045; */
-      color: #000000;
+    .bubble-wrap.wrap-me {
       align-self: flex-end;
-      border-bottom-right-radius: 4px;
+      align-items: flex-end;
     }
 
-    .bubble.guest {
-      background: #ffffff;
-      /* border: 2px solid #94b8e0; */
-      color: #1a3050;
+    .bubble-wrap.wrap-them {
       align-self: flex-start;
+      align-items: flex-start;
     }
 
+    .bubble-wrap.wrap-guest {
+      align-self: flex-start;
+      align-items: flex-start;
+    }
+
+    /* Sender name above bubble (them only) */
     .bubble-sender {
       font-family: 'TrilHandwriting';
       font-size: clamp(11px, 1.8vw, 14px);
@@ -355,56 +423,107 @@
       padding-left: 4px;
     }
 
-    .bubble-meta {
-      font-size: clamp(11px, 1.8vw, 14px);
-      color: #000000;
-      margin-top: 3px;
-      align-self: flex-start;
+    /* The bubble itself */
+    .bubble {
+      padding: clamp(10px, 1.8vh, 15px) clamp(14px, 2.8vw, 22px);
+      border-radius: 22px;
+      font-size: clamp(15px, 2.6vw, 20px);
+      line-height: 1.5;
+      position: relative;
+      max-width: 38vw;
     }
 
-    .bubble-meta.them {
+    .bubble.them {
       background: #ffffff;
       /* border: 2px solid #c8b890; */
       color: #000000;
-      align-self: flex-start;
+      border-bottom-left-radius: 4px;
     }
 
-    .bubble-meta.me {
+    .bubble.me {
       background: #ffffff;
       /* border: 2px solid #3a6045; */
       color: #000000;
-      align-self: flex-end;
       border-bottom-right-radius: 4px;
     }
 
-    .name-row {
-      display: flex;
-      gap: 10px;
-      padding: 8px 18px 0;
-      flex-shrink: 0;
-      align-items: center;
+    .bubble.guest {
+      background: #ffffff;
+      /* border: 2px solid #94b8e0; */
+      color: #000000;
+      border-bottom-left-radius: 4px;
     }
 
-    .name-input {
-      border: 2px solid #c4a870;
-      border-radius: 26px;
-      padding: 9px 18px;
+    /* Timestamp below bubble, bottom-right aligned */
+    .bubble-ts {
       font-family: 'TrilHandwriting';
-      font-size: clamp(14px, 2.2vw, 17px);
-      background: #ffffff;
-      color: #2d2416;
-      outline: none;
-      width: 200px;
+      font-size: clamp(10px, 1.6vw, 13px);
+      color: #000000;
+      margin-top: 3px;
+      padding-right: 4px;
+      align-self: flex-end;
+    }
+
+    .bubble-wrap.wrap-them .bubble-ts,
+    .bubble-wrap.wrap-guest .bubble-ts {
+      align-self: flex-end;
+      padding-right: 0;
+      padding-left: 4px;
+    }
+
+    .bubble-img {
+      max-width: clamp(160px, 38vw, 320px);
+      max-height: clamp(160px, 30vh, 280px);
+      width: auto;
+      height: auto;
+      border-radius: 14px;
+      display: block;
+      cursor: zoom-in;
+      object-fit: cover;
+      /* slight sketch border */
+    }
+
+    /* image bubbles have no background / padding — just the image */
+    .bubble.img-bubble {
+      background: none !important;
+      border: none !important;
+      padding: 0 !important;
     }
 
     .gb-label {
       font-family: 'TrilHandwriting';
       font-size: clamp(12px, 1.9vw, 15px);
-      color: #7a6a4e;
+      color: #000000;
     }
 
+    /* ── DATE STAMP — iMessage style centred divider ── */
+    .date-stamp {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 10px 0 4px;
+      align-self: stretch;
+    }
+
+    .date-stamp::before,
+    .date-stamp::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+    }
+
+    .date-stamp-label {
+      font-family: 'TrilHandwriting';
+      font-size: clamp(16px, 2vw, 28px);
+      color: #000000;
+      white-space: nowrap;
+      background: #ffffff;
+      padding: 2px 10px;
+    }
+
+    /* Input row — only shown for guestbook */
     .chat-input-row {
-      display: none;
+      display: flex;
       gap: 10px;
       padding: clamp(10px, 1.8vh, 16px) 18px;
       /* border-top: 2px solid #d4c4a0; */
@@ -415,13 +534,13 @@
 
     .chat-input {
       flex: 1;
-      /* border: 2px solid #c4a870; */
+      border: 2px solid #c4a870;
       border-radius: 26px;
       padding: clamp(10px, 1.8vh, 15px) 18px;
       font-family: 'TrilHandwriting';
       font-size: clamp(15px, 2.5vw, 19px);
       background: #ffffff;
-      color: #2d2416;
+      color: #000000;
       outline: none;
       resize: none;
       max-height: 100px;
@@ -752,7 +871,7 @@
 
     .note-title {
       font-family: 'TrilHandwriting';
-      font-size: clamp(22px, 3.8vw, 32px);
+      font-size: clamp(16px, 3vw, 26px);
       font-weight: 700;
       color: #000000;
     }
@@ -809,7 +928,7 @@
       flex-shrink: 0;
     }
 
-    .note-ed-body {
+    .note-full {
       flex: 1;
       border: none;
       font-family: 'TrilHandwriting';
@@ -820,7 +939,7 @@
       outline: none;
       resize: none;
       line-height: 2.15;
-      background-image: linear-gradient(transparent, transparent calc(2.15em - 1px), #e8d8a0 calc(2.15em - 1px), #e8d8a0 2.15em);
+      /* background-image: linear-gradient(transparent, transparent calc(2.15em - 1px), #e8d8a0 calc(2.15em - 1px), #e8d8a0 2.15em); */
       background-size: 100% 2.15em;
     }
 
@@ -850,12 +969,25 @@
       color: #fff;
     }
 
+    .check-header {
+      margin-top: 1vw;
+      text-decoration: underline;
+    }
+
+    .note-month-header {
+      font-family: 'TrilHandwriting';
+      font-size: clamp(22px, 3.8vw, 32px);
+      font-weight: 700;
+      color: #000000;
+      margin-top: 2vw;
+    }
+
     .status-toast {
       position: fixed;
       bottom: 20px;
       left: 50%;
       transform: translateX(-50%);
-      background: rgba(40, 30, 15, .88);
+      background: #000;
       color: #fff;
       font-family: 'TrilHandwriting';
       font-size: clamp(13px, 2.2vw, 17px);
@@ -915,10 +1047,7 @@
     <!-- MESSAGES APP -->
     <div class="app-screen" id="app-messages">
       <div class="app-header">
-        <div class="back-btn" onclick="goHome()">
-          <img class="back-btn-img" id="back-btn-img" src="assets/images/back.png">
-          <span>Back</span>
-        </div>
+        <div class="back-btn" onclick="goHome()">← Home</div>
         <div class="app-title-h">Messages</div>
       </div>
       <div class="doodle">
@@ -928,29 +1057,51 @@
         <div id="msg-thread"></div>
       </div>
       <div class="chat-window" id="chat-window">
+        <!-- header: back · avatar · name · [video call] [voice call] -->
         <div class="chat-header">
-          <div class="back-btn" onclick="closeChat()">
-            <img class="back-btn-img" id="back-btn-img" src="assets/images/back2.png">
-          </div>
+          <div class="back-btn" onclick="closeChat()">← Back</div>
           <div class="avatar" id="chat-avatar" style="background:#d4f0d8;color:#3a7a4a;">M</div>
-          <div class="app-title-h" id="chat-name" style="font-size:clamp(20px,3.5vw,35px);">Mum</div>
+          <div class="app-title-h" id="chat-name" style="font-size:clamp(20px,3.5vw,30px);">Mum</div>
+          <div class="chat-call-btns">
+            <div class="call-btn" title="Video Call" onclick="toast('📹 Video calling… (decorative)')">
+              <!-- <img class="call-btn-img" src="assets/images/video_call.png"> -->
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round"
+                stroke-linejoin="round" width="80%" height="80%">
+                <rect x="2" y="7" width="13" height="10" rx="2" />
+                <path d="M15 9l5-2v10l-5-2V9z" />
+              </svg>
+            </div>
+            <div class="call-btn" title="Voice Call" onclick="toast('📞 Calling… (decorative)')">
+              <img class="call-btn-img" src="assets/images/voice_call.png">
+              <!-- <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" width="60%" height="60%">
+                <path
+                  d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .84h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.23-1.23a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z" />
+              </svg> -->
+            </div>
+          </div>
         </div>
         <div class="doodle">
           <hr>
         </div>
+
+        <!-- message bubbles -->
         <div class="chat-messages" id="chat-messages"></div>
-        <div class="name-row" id="name-row" style="display:none;">
-          <input class="name-input" id="guest-name" placeholder="Your name…" maxlength="30" />
-          <span class="gb-label">sign your message ✏️</span>
-        </div>
+
+        <!-- guestbook: send row (hidden for private chats) -->
         <div class="doodle">
           <hr>
         </div>
-        <div class="chat-input-row" id="chat-input-row">
-          <textarea class="chat-input doodle-border" id="chat-input" placeholder="Type a message…" rows="1"
+        <div class="chat-input-row doodle" id="chat-input-row" style="display:none;">
+          <textarea class="chat-input" id="chat-input" placeholder="Write your message…" rows="1"
             oninput="this.style.height='auto';this.style.height=Math.min(this.scrollHeight,100)+'px'"
             onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendMsg();}"></textarea>
           <button class="send-btn doodle-round" onclick="sendMsg()">↑</button>
+        </div>
+
+        <!-- private chats: read-only notice -->
+        <div class="chat-readonly-notice" id="chat-readonly-notice" style="display:none;">
+          💬 Read-only chat
         </div>
       </div>
     </div>
@@ -981,8 +1132,8 @@
         <div class="viewer-nav left" onclick="navPhoto(-1)">
           <img class="photo-viewer-close-img" src="assets/images/previous.png">
         </div>
-        <div id="photo-viewer-media"></div>
         <div class="viewer-caption" id="photo-viewer-caption"></div>
+        <div id="photo-viewer-media"></div>
         <div class="viewer-nav right" onclick="navPhoto(1)">
           <img class="photo-viewer-close-img" src="assets/images/next.png">
         </div>
@@ -1002,9 +1153,111 @@
       </div>
       <div class="app-content" id="notes-content"></div>
     </div>
+  </div>
 
+  <div class="chat-img-viewer" id="chat-img-viewer" onclick="closeChatImg()">
+    <div class="chat-img-viewer-close"><img class="photo-viewer-close-img" src="assets/images/cross.png"></div>
+    <img id="chat-img-viewer-img" src="" alt="" />
   </div>
   <div class="status-toast" id="toast"></div>
+
+  <script id="notes-data" type="application/json">
+[
+  {
+    "type": "checklist",
+    "title": "DEADLINES",
+    "body": "27/4 SIS Exhibition\n1/5 PPIM Portfolio Website\n1/5 PPIM Reflective Essay\n6/5 Media Production Project\n6/5 Media Production Project Diary\n11/5 Media Production Reflective Essay\n11/5 Photography Portfolio\n15/5 SIS Reflective Essay",
+    "items": [
+      { "text": "SIS Exhibition - 27/4", "done": false },
+      { "text": "PPIM Portfolio Website - 1/5", "done": false },
+      { "text": "PPIM Reflective Essay - 1/5", "done": false },
+      { "text": "Media Production Project - 6/5", "done": false },
+      { "text": "Media Production Project Diary - 6/5", "done": false },
+      { "text": "Media Production Reflective Essay - 11/5", "done": false },
+      { "text": "Photography Portfolio - 11/5", "done": false },
+      { "text": "SIS Reflective Essay - 15/5", "done": false }
+    ],
+    "date": "2026-04-13T17:26"
+  },
+  {
+    "type": "note",
+    "title": "LONDON DAY TRIP WITH AMYYY",
+    "body": "big ben\nhyde park\n\npanadera cafe\ncovent garden\nphotoautomat\nbreadstall pizza",
+    "date": "2026-02-25T16:06"
+  },
+  {
+    "type": "note",
+    "title": "watchlist",
+    "body": "before sunrise\nbefore sunset\nbefore midnight\naftersun\n500 days of summer ✅",
+    "date": "2026-02-03T15:58"
+  },
+  {
+    "type": "note",
+    "title": "New Year Goals",
+    "body": "start fitness era LMAOO\nread more\nwatch more films\ntry solo travelling???\ncreate content\njournal more\nbe less scared\ntry out an internship in the UK",
+    "date": "2026-01-01T19:33"
+  },
+  {
+    "type": "note",
+    "title": "5 layers of audio",
+    "body": "dialogue\nVO/narration\nambience/room tone\nsound effects\nmusic",
+    "date": "2025-12-03T11:31"
+  },
+  {
+    "type": "note",
+    "title": "budapest!",
+    "body": "budapest castle\nfisherman’s bastion\nbudapest parliament\nruin bars\nst stephen basilica\nmargit hd (lrt stop)\ncentral market\n\nfood 😋\nvargon etterem\nfor sale pub\ngelateria pichler fagyizo\nderyne kenyer\ncsezenyi cafe and coffee bean roster",
+    "date": "2025-11-27T11:20"
+  },
+  {
+    "type": "note",
+    "title": "grocery",
+    "body": "miso paste\nkimchi\ncheese\nvege\nfruits\nbaking potatoes\nbrown rice\njuice\nface mask\ntoilet roll",
+    "date": "2025-11-02T14:55"
+  },
+  {
+    "type": "note",
+    "title": "bath itinerary ✨",
+    "body": "sally lunn\npultney bridge\nthe circus\nbath abbey\nprior park",
+    "date": "2025-10-25T11:19"
+  },
+  {
+    "type": "note",
+    "title": "buy!!!",
+    "body": "drying rack\nmug\nteaspoon\ntoilet scrub\nfloor mat\nhangers\npot\npan\nutensils",
+    "date": "2025-09-19T17:18"
+  },
+  {
+    "type": "checklist",
+    "title": "MY ✈️ UK CHECKLIST",
+    "body": "documents\nvisa\npassport\ncas\nidentity card\n\nnecessities\nheattech\nwarm clothes\nundergarment\nmedicine\nskincare\nspare glasses\nbedsheet\ntowel\nelectronics\ncamera\nlaptop\nipad\ncharger",
+    "items": [
+      { "type": "header", "text": "documents" },
+      { "text": "visa", "done": false },
+      { "text": "passport", "done": false },
+      { "text": "cas", "done": false },
+      { "text": "identity card", "done": false },
+      { "type": "header", "text": "\n" },
+      { "type": "header", "text": "necessities" },
+      { "text": "heattech", "done": false },
+      { "text": "warm clothes", "done": false },
+      { "text": "undergarment", "done": false },
+      { "text": "medicine", "done": false },
+      { "text": "skincare", "done": false },
+      { "text": "spare glasses", "done": false },
+      { "text": "bedsheet", "done": false },
+      { "text": "towel", "done": false },
+      { "type": "header", "text": "" },
+      { "type": "header", "text": "electronics" },
+      { "text": "camera", "done": false },
+      { "text": "laptop", "done": false },
+      { "text": "ipad", "done": false },
+      { "text": "charger", "done": false }
+    ],
+    "date": "2025-09-07T02:08"
+  }
+]
+</script>
 
   <script>
     // ── CLOCK ──
@@ -1041,7 +1294,7 @@
     function goHome() {
       document.getElementById('home').style.display = 'flex';
       document.querySelectorAll('.app-screen').forEach(s => s.classList.remove('active'));
-      closeChat(); closeNoteEditor();
+      closeChat();
     }
     function openApp(a) {
       document.getElementById('home').style.display = 'none';
@@ -1065,128 +1318,521 @@
     // ];
 
     const privateChats = [
-  {
-    id: 't-family', name: 'The T Family <img class="emoji" src="assets/images/sunglass_emoji.png"> <img class="emoji" src="assets/images/heart_emoji.png">', bg: '#ffffff', col: '#000000', init: '<img class="avatar" src="assets/images/family_pic.png">',
-    msgs: [
-      { s:'them', sender:'Mum', t:'Hey sweetheart! 👋', ts:'9:02 AM' },
-      { s:'them', sender:'Mum', t:'Did you eat yet? 🍱', ts:'9:03 AM' },
-      { s:'me',                 t:'Yes mum lol 😅',      ts:'9:15 AM' },
-      { s:'them', sender:'Mum', t:'Good! Love you ❤️',   ts:'9:16 AM' },
-      { s:'me',                 t:'Love you too! 😊',    ts:'9:20 AM' },
-      { s:'them', sender:'Mum', t:'Come home soon okay', ts:'9:21 AM' },
-    ]
-  },
-  {
-    id: 'amy', name: 'Amy', bg: '#ffffff', col: '#000000', init: '<img class="avatar" src="assets/images/friend_pic.png">',
-    msgs: [
-      { s:'me',                   t:'u coming tmr?',            ts:'2:30 PM' },
-      { s:'them', sender:'Jamie', t:'yeah for sure 👍',         ts:'2:45 PM' },
-      { s:'me',                   t:'sick, meet at the usual?', ts:'2:46 PM' },
-      { s:'them', sender:'Jamie', t:'yep!! 7pm?',               ts:'2:47 PM' },
-      { s:'me',                   t:'perfect 🙌',               ts:'2:48 PM' },
-      { s:'them', sender:'Jamie', t:'haha ok ok see u tmr',     ts:'2:49 PM' },
-    ]
-  },
-];
+      {
+        id: 'family', name: 'Family', bg: '#fff0f0', col: '#a85c5c', init: '<img class="avatar" src="assets/images/family_avatar.png">',
+        msgs: [
+          // ── Oct 6, 2025 ──
+          { date: 'Mon, 6 Oct 2025' },
+          {
+            s: 'them', sender: 'Mom',
+            t: '..aaaww never ever received such a heart-warming letter in my entire life!!…TQ so much Tril gonna miss u so much when im back in Malaysia!!…cries!! 😭🥹💓💗',
+            img: 'assets/messages/family_pic_1.jpg',
+            ts: '4:55 PM'
+          },
+          {
+            s: 'me',
+            t: 'safe flight mom dad!! text when reached 🫶',
+            ts: '6:47 PM'
+          },
+
+          // ── Oct 7, 2025 ──
+          { date: 'Tues, 7 Oct 2025' },
+          {
+            s: 'them', sender: 'Dad',
+            t: 'We arrived home',
+            ts: '12:00 PM'
+          },
+          {
+            s: 'them', sender: 'Mom',
+            t: '..back home!!…the entire house is so quiet without both of you girls!!🥹😭',
+            img: 'assets/messages/family_pic_2.jpg',
+            ts: '12:34 PM'
+          },
+          {
+            s: 'them', sender: 'Sis',
+            t: 'Love and miss u all always 🥹💗',
+            ts: '1:06 PM'
+          },
+          {
+            s: 'me',
+            t: 'aw rest well, miss you guys so much already!',
+            ts: '1:10 PM'
+          },
+
+          // ── Oct 29, 2025 ──
+          { date: 'Wed, 29 Oct 2025' },
+          {
+            s: 'me',
+            t: 'hiii I think because of weather im sick again from yesterday 🥲 cough and flu',
+            ts: '8:05 AM'
+          },
+          {
+            s: 'them', sender: 'Mom',
+            t: 'Hmmm do wear warmer!!…just take medicine & rest lots/sleep/drink lots water/eat more fruits..🥲',
+            ts: '8:07 AM'
+          },
+
+          // ── Dec 31, 2025 ──
+          { date: 'Wed, 31 Dec 2025' },
+          {
+            s: 'them', sender: 'Dad',
+            t: '🎉 happy new year! u all ok?',
+            ts: '4:18 AM'
+          },
+          {
+            s: 'me',
+            t: 'awww happy new year dad! yes all ok!! ❤️',
+            ts: '9:19 AM'
+          },
+          {
+            s: 'me',
+            t: 'btw dad u wanna call?',
+            ts: '9:21 AM'
+          },
+          {
+            s: 'them', sender: 'Dad',
+            t: 'working now…can call later',
+            ts: '9:24 AM'
+          },
+
+          // ── Feb 16, 2026 ──
+          { date: 'Mon, 16 Feb 2026' },
+          {
+            s: 'them', sender: 'Sis',
+            t: 'Happy CNY to yall!!!! ❤️🐴🏮🧧 love and miss yall 🥹💗',
+            ts: '4:05 PM'
+          },
+          {
+            s: 'them', sender: 'Mom',
+            t: '…tmr nite video call??!!',
+            ts: '4:08 PM'
+          },
+          {
+            s: 'me',
+            t: 'i think I don have plans so can!',
+            ts: '4:08 PM'
+          },
+          {
+            s: 'them', sender: 'Sis',
+            t: 'Ya can!',
+            ts: '4:08 PM'
+          },
+
+          // ── Feb 17, 2026 ──
+          { date: 'Tue, 17 Feb 2026' },
+          {
+            s: 'me',
+            t: 'HAPPY CNY IN UK TIME!!!! 🍊🍊🍊🐎🐎🐎',
+            ts: '12:00 AM'
+          },
+
+          // ── Mar 14, 2026 ──
+          { date: 'Sat, 14 March 2026' },
+          {
+            s: 'them', sender: 'Mom',
+            t: 'I saw your friends in the mall today!! Aww soo happy to talk to them cos it feels like im meetin & talking wt u!!...aargh miss u!!🥹',
+            ts: '11:31 AM'
+          },
+          {
+            s: 'me',
+            t: ['AWWWW so cute 😭😭😭😭😭', 'cries miss u so much 😭🥹'],
+            ts: '11:33 AM'
+          },
+          {
+            s: 'them', sender: 'Mom',
+            t: ['I kind of talk almost 15-20 mins scare hold them up cos too excited to see them cos feels like im talkin to u!! 😭', 'they say im gonna tell tri i saw her mom haha!!😭'],
+            ts: '11:40 AM'
+          },
+          {
+            s: 'me',
+            t: 'awww miss u and them so much 😭',
+            ts: '11:42 AM'
+          },
+          {
+            s: 'them', sender: 'Mom',
+            t: '…btw I did tell them u miss them much too!!🥹',
+            ts: '11:45 AM'
+          },
+
+          // ── Mar 27, 2026 ──
+          { date: 'Fri, 27 March 2026' },
+          {
+            s: 'me',
+            t: ['HAPPY BIRTHDAY @Dad!!!!', 'Sorryy for wishing u late, I was helping my friend with some filming 😭😭 We call tmr!!'],
+            ts: '6:12 PM'
+          },
+
+          // ── Apr 10, 2026 ──
+          { date: 'Fri, 10 Apr 2026' },
+          {
+            s: 'them', sender: 'Sis',
+            t: 'At college green',
+            img: 'assets/messages/family_pic_3.jpg',
+            ts: '1:15 PM'
+          },
+          {
+            s: 'them', sender: 'Sis',
+            t: 'And then Korean food for dinner',
+            img: 'assets/messages/family_pic_4.jpg',
+            ts: '9:21 PM'
+          },
+          {
+            s: 'them', sender: 'Mom',
+            t: '…aww miss u girls!!🥹🫶',
+            ts: '9:25 PM'
+          },
+        ]
+      },
+      {
+        id: 'amy', name: 'Amy', bg: '#000000', col: '#ffffff', init: '<img class="avatar" src="assets/images/friend_avatar.png">',
+        msgs: [
+          // ── Sep 14, 2025 ──
+          { date: 'Sun, 14 Sep 2025' },
+          { s: 'me', t: 'packing my skincare stuff rn', ts: '5:49 PM' },
+          { s: 'them', sender: 'Amy', t: 'r u rlly leaving me', ts: '5:50 PM' },
+
+          // ── Sep 16, 2025 ──
+          { date: 'Tue, 16 Sep 2025' },
+          { s: 'them', sender: 'Amy', t: ['safe flight to the UK later triiiii', 'love u so much text me after u landed'], ts: '3:25 PM' },
+          { s: 'me', t: 'thankuu just landed miss u already', ts: '6:39 AM' },
+          { s: 'me', t: 'queuing to board rn', ts: '11:24 AM' },
+          { s: 'them', sender: 'Amy', t: 'ure actually leaving me', ts: '11:25 AM' },
+
+          // ── Oct 13, 2025 ──
+          { date: 'Mon, 13 Oct 2025' },
+          { s: 'them', sender: 'Amy', t: ['im travelling to the UK with my fam next year', 'we should meet up in london'], ts: '1:50 PM' },
+          { s: 'me', t: ['STFU NO WAYYYY', 'WHEN???'], ts: '1:52 PM' },
+          { s: 'them', sender: 'Amy', t: 'ILL BE IN LONDON MARCH 15TH LETS GOO', ts: '1:53 PM' },
+          { s: 'me', t: 'OMG YESSS LONDON 2026 LFGGG', ts: '1:54 PM' },
+
+          // ── Oct 16, 2025 ──
+          { date: 'Thurs, 16 Oct 2025' },
+          { s: 'them', sender: 'Amy', t: ['was looking back at our pics', 'and listening to Staying'], img: 'assets/messages/amy_pic_1.jpg', ts: '3:20 PM' },
+          { s: 'them', sender: 'Amy', t: 'thought about u', ts: '3:20 PM' },
+
+          // ── Nov 11, 2025 ──
+          { date: 'Tue, 11 Nov 2025' },
+          {
+            s: 'me', content: [
+              { img: 'assets/messages/amy_pic_2.jpg' },
+              { t: 'almost set my campus on fire' },
+              { t: 'thoughts?' }
+            ], ts: '11:21 AM'
+          },
+          { s: 'them', sender: 'Amy', t: 'WTF did u do LMAO', ts: '11:21 AM' },
+          // { s: 'me', img: 'assets/messages/amy_pic_3.jpg', t: 'think im getting deported', ts: '11:22 AM' },
+          { s: 'me', content: [{ img: 'assets/messages/amy_pic_3.jpg' }, { t: 'think im getting deported' }], ts: '11:22 AM' },
+
+          // ── Dec 20, 2025 ──
+          { date: 'Sat, 20 Dec 2025' },
+          {
+            s: 'them', sender: 'Amy',
+            t: 'happy 21st birthday triiiii. can’t believe it’s my first time not being able to celebrate ur bd with u after being frens w u for 10 years alr TTTT anyways im so proud of what you’ve achieved so far and i feel tht u making the decision to study abroad actually proved that you’re a brave person in wanting to have a change in urself and i can see that you’re doing even better day by day. its okay to feel not okay sometimes and ill always be the person who will listen to the same problem of yours. love u so muchie and rlly miss u so muchie…. my one and only bff4eva… 🩵😭stay safeeee hope you’ll enjoy ur big big golden bday hehe love uuu',
+            ts: '11:45 PM'
+          },
+          { s: 'me', t: ['NOOOO teared up reading that', 'miss u so much thank u so much and love u so much my bestie 4evaa 😭💗'], ts: '11:47 PM' },
+
+          // ── Dec 31, 2025 ──
+          { date: 'Wed, 31 Dec 2025' },
+          { s: 'me', t: 'hii happy new year 2026 💗love u so much aaaaa', ts: '4:00 PM' },
+          { s: 'them', sender: 'Amy', t: 'happy new year from malaysia 😍😍😍😍', ts: '4:00 PM' },
+
+          // ── Jan 29, 2026 ──
+          { date: 'Thu, 29 Jan 2026' },
+          { s: 'me', t: 'wait I genuinely can’t wait for march 15th', ts: '11:35 AM' },
+          { s: 'them', sender: 'Amy', t: 'FRR i’ve got u some stuff btw', ts: '11:35 AM' },
+          { s: 'me', t: 'LMAOO WHATT', ts: '11:40 AM' },
+          { s: 'them', sender: 'Amy', t: '1. Maggi asam laksa 2. Milo 3. Indomee 4. Prawn crackers', ts: '11:42 AM' },
+          { s: 'me', t: 'THATS CRAZY HAHAHHA BRINGING OVER THE ENTIRE MALAYSIA?!??!??!', ts: '11:45 AM' },
+
+          // ── Feb 25, 2026 ──
+          { date: 'Wed, 25 Feb 2026' },
+          { s: 'them', sender: 'Amy', t: 'can’t wait to see u', ts: '2:06 PM' },
+          { s: 'me', t: ['FR THOOOO', 'IN NEXT TWO WEEKS IM SO EXCITEDD'], ts: '2:07 PM' },
+
+          // ── Feb 28, 2026 ──
+          { date: 'Sat, 28 Feb 2026' },
+          { s: 'them', sender: 'Amy', t: ['gosh tri a lot of flights are cancelled', 'our flight to UK might be cancelled too bcs we have a layover in dubai'], ts: '11:35 PM' },
+          { s: 'me', t: 'oh no…yea i saw the news… :(', ts: '11:37 PM' },
+
+          // ── Mar 6, 2026 ──
+          { date: 'Fri, 6 Mar 2026' },
+          { s: 'them', sender: 'Amy', t: 'sorry couldn’t make it, cancelled everything already', ts: '7:26 AM' },
+          { s: 'me', t: 'ahhh so sorry and no worries :((( safety first <3', ts: '7:47 AM' },
+        ]
+      }
+    ];
 
     const GB = 'guestbook';
     let currentChatId = null;
 
-    // Guestbook now stored via Cloudflare KV through API endpoint
+    // ── Helpers ──
+    function nowTs() {
+      return new Date().toLocaleTimeString('en-MY', { hour: '2-digit', minute: '2-digit' });
+    }
+    function nowDateTs() {
+      const n = new Date();
+      return n.toLocaleDateString('en-MY', { month: 'short', day: 'numeric' }) + ' ' + nowTs();
+    }
+
+    // ── Guestbook API ──
     async function fetchGuestMsgs() {
       try {
         const r = await fetch('/api/guestbook');
         if (!r.ok) throw new Error();
         return await r.json();
       } catch {
-        // Fallback to localStorage if API unavailable (local dev)
         try { return JSON.parse(localStorage.getItem('gb_msgs') || '[]'); } catch { return []; }
       }
     }
     async function postGuestMsg(name, text) {
-      const ts = new Date().toLocaleDateString('en-MY', { month: 'short', day: 'numeric' }) + ' ' + new Date().toLocaleTimeString('en-MY', { hour: '2-digit', minute: '2-digit' });
+      const ts = nowDateTs();
       const msg = { name, t: text, time: ts };
       try {
-        const r = await fetch('/api/guestbook', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(msg) });
+        const r = await fetch('/api/guestbook', {
+          method: 'POST', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(msg)
+        });
         if (!r.ok) throw new Error();
       } catch {
-        // Fallback: localStorage
-        const msgs = JSON.parse(localStorage.getItem('gb_msgs') || '[]'); msgs.push(msg);
-        localStorage.setItem('gb_msgs', JSON.stringify(msgs));
+        const msgs = JSON.parse(localStorage.getItem('gb_msgs') || '[]');
+        msgs.push(msg); localStorage.setItem('gb_msgs', JSON.stringify(msgs));
       }
       return msg;
     }
 
+    // ── Date stamp divider (iMessage style) ──
+    function makeDateStamp(label) {
+      const wrap = document.createElement('div');
+      wrap.className = 'date-stamp';
+      const span = document.createElement('span');
+      span.className = 'date-stamp-label';
+      span.textContent = label;
+      wrap.appendChild(span);
+      return wrap;
+    }
+
+    // ── Chat image lightbox ──
+    function openChatImg(src) {
+      document.getElementById('chat-img-viewer-img').src = src;
+      document.getElementById('chat-img-viewer').classList.add('open');
+    }
+    function closeChatImg() {
+      document.getElementById('chat-img-viewer').classList.remove('open');
+      document.getElementById('chat-img-viewer-img').src = '';
+    }
+
+    // ── Render a single bubble wrap (sender label + bubble + timestamp) ──
+    function makeBubble({ side, sender, text, img, content, timestamp }) {
+      // side: 'me' | 'them' | 'guest'
+      const wrap = document.createElement('div');
+      wrap.className = `bubble-wrap wrap-${side}`;
+
+      // Sender name (only for 'them' / 'guest', when sender is provided)
+      if ((side === 'them' || side === 'guest') && sender) {
+        const sEl = document.createElement('div');
+        sEl.className = 'bubble-sender';
+        sEl.textContent = sender;
+        wrap.appendChild(sEl);
+      }
+
+      // Build a normalised content array from whatever was passed:
+      //   content: [...]           → use as-is
+      //   t: 'string' or t: [...]  → convert to content
+      //   img: 'url'               → convert to content
+      //   mix of t + img           → text first (legacy fallback)
+      let items = [];
+      if (content) {
+        items = content;
+      } else {
+        if (text) {
+          const lines = Array.isArray(text) ? text : [text];
+          lines.forEach(line => items.push({ t: line }));
+        }
+        if (img) items.push({ img });
+      }
+
+      // Track whether any image was rendered — used for timestamp placement
+      let lastImgEl = null;
+
+      items.forEach((item, idx) => {
+        const isLast = idx === items.length - 1;
+
+        if (item.t) {
+          const b = document.createElement('div');
+          b.className = `bubble ${side} doodle-border`;
+          b.textContent = item.t;
+          b.style.marginBottom = isLast ? '0' : '4px';
+          wrap.appendChild(b);
+          lastImgEl = null; // last rendered item is text, not image
+        }
+
+        if (item.img) {
+          const bImg = document.createElement('div');
+          bImg.className = `bubble ${side} img-bubble`;
+          bImg.style.marginBottom = isLast ? '0' : '4px';
+          const image = document.createElement('img');
+          image.className = 'bubble-img doodle-border';
+          image.src = item.img;
+          image.alt = 'shared image';
+          image.onerror = () => {
+            bImg.innerHTML = '';
+            bImg.className = `bubble ${side} doodle-border`;
+            bImg.style.cssText = 'opacity:.55;font-size:clamp(12px,2vw,15px);';
+            bImg.textContent = '🖼️ image not found — check file path';
+          };
+          image.onclick = (e) => { e.stopPropagation(); openChatImg(item.img); };
+          bImg.appendChild(image);
+          wrap.appendChild(bImg);
+          lastImgEl = bImg; // track the most recent image container
+        }
+      });
+
+      // Timestamp — always one, at the very end
+      if (timestamp) {
+        const ts = document.createElement('div');
+        ts.className = 'bubble-ts';
+        ts.textContent = timestamp;
+        if (lastImgEl) {
+          // Last item was an image (or image was last rendered) → pin inside it
+          ts.style.cssText = 'display:block;text-align:right;margin-top:3px;';
+          lastImgEl.appendChild(ts);
+        } else {
+          // Last item was text → append to wrap as normal
+          wrap.appendChild(ts);
+        }
+      }
+
+      return wrap;
+    }
+
+    // ── Thread list ──
     function buildMsgThread() {
       const w = document.getElementById('msg-thread'); w.innerHTML = '';
-      const all = [...privateChats, { id: GB, name: 'Dear Home', bg: '#ffffff', col: '#000000', init: '<img class="avatar" src="assets/images/dear_home.png">', isGuest: true }];
+      const all = [
+        ...privateChats,
+        { id: GB, name: 'Guestbook 📖', bg: '#ffffff', col: '#000000', init: '<img class="avatar" src="assets/images/dear_home_avatar.png">', isGuest: true }
+      ];
       all.forEach(c => {
-        const prev = c.isGuest ? 'Loading…' : c.msgs[c.msgs.length - 1].t;
+        // Last preview: skip date-only entries
+        const lastMsg = c.isGuest
+          ? 'Loading…'
+          : [...c.msgs].reverse().find(m => m.s)?.t || '📷 Image';
         const d = document.createElement('div'); d.className = 'msg-contact doodle-border';
         d.innerHTML = `<div class="avatar" style="background:${c.bg};color:${c.col};">${c.init}</div>
-      <div style="flex:1;min-width:0;"><div class="contact-name">${c.name}</div>
-      <div class="contact-preview" id="prev-${c.id}">${prev.substring(0, 52)}</div></div>`;
+      <div style="flex:1;min-width:0;">
+        <div class="contact-name">${c.name}</div>
+        <div class="contact-preview" id="prev-${c.id}">${String(lastMsg).substring(0, 52)}</div>
+      </div>`;
         d.onclick = () => openChat(c.id); w.appendChild(d);
         if (c.isGuest) {
           fetchGuestMsgs().then(msgs => {
             const p = document.getElementById('prev-' + GB);
-            if (p) p.textContent = msgs.length ? `${msgs[msgs.length - 1].name || 'Guest'}: ${msgs[msgs.length - 1].t}`.substring(0, 52) : 'Leave a message! ✨';
+            if (p) p.textContent = msgs.length
+              ? `${msgs[msgs.length - 1].name || 'Guest'}: ${msgs[msgs.length - 1].t}`.substring(0, 52)
+              : 'Leave a message! ✨';
           });
         }
       });
     }
 
+    // ── Open chat ──
     async function openChat(id) {
-      currentChatId = id; const isGuest = id === GB;
+      currentChatId = id;
+      const isGuest = id === GB;
       const box = document.getElementById('chat-messages'); box.innerHTML = '';
       let name, bg, col, init;
+
+      // Toggle input vs read-only
+      const inputRow = document.getElementById('chat-input-row');
+
       if (isGuest) {
-        name = 'Dear Home'; bg = '#ffd4e8'; col = '#a03060'; init = '<img class="avatar" src="assets/images/dear_home.png">';
-        box.innerHTML = '<div style="text-align:center;padding:12px 16px;font-size:clamp(13px,2.2vw,17px);color:#8a7a5e;background:#fff8f0;border-radius:14px;margin-bottom:10px;line-height:1.6;">Leave a message for everyone to see! 🌸</div>';
+        name = 'Dear Home,'; bg = '#ffd4e8'; col = '#a03060'; init = '<img class="avatar" src="assets/images/dear_home_avatar.png">';
+
+        // Intro note
+        const note = document.createElement('div');
+        note.style.cssText = `
+  position: sticky;
+  top: 10px;
+  z-index: 10;
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 10px 14px;
+  font-size: clamp(13px,2.2vw,17px);
+  color: #000000;
+
+  background: #ffffff;
+  border: 1.5px solid #000000;
+  border-radius: 12px;
+
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  margin-bottom: 12px;
+`;
+        note.innerHTML = `Leave an anonymous message to someone who’s home to you and/or is far away from you now ❤️`;
+
+        box.appendChild(note);
+
         const msgs = await fetchGuestMsgs();
         msgs.forEach(m => {
-          const b = document.createElement('div'); b.className = 'bubble guest doodle-border'; b.textContent = m.t; box.appendChild(b);
-          const meta = document.createElement('div'); meta.className = 'bubble-meta'; meta.textContent = (m.name || 'Anonymous') + ' · ' + m.time; box.appendChild(meta);
+          box.appendChild(makeBubble({
+            side: 'guest', sender: 'Anonymous',
+            text: m.t, timestamp: m.time
+          }));
         });
-        document.getElementById('name-row').style.display = 'none';
-        document.getElementById('chat-input').placeholder = 'Write your message…';
+
+        inputRow.style.display = 'flex';
+
       } else {
-        const c = privateChats.find(x => x.id === id); name = c.name; bg = c.bg; col = c.col; init = c.init;
-        c.msgs.forEach(message => { const b = document.createElement('div'); b.className = 'bubble doodle-border ' + message.s; b.textContent = message.t; box.appendChild(b); const meta = document.createElement('div'); meta.className = 'bubble-meta ' + message.s; meta.textContent = message.m; box.appendChild(meta); });
-        document.getElementById('name-row').style.display = 'none';
-        document.getElementById('chat-input').placeholder = 'Type a message…';
+        const c = privateChats.find(x => x.id === id);
+        name = c.name; bg = c.bg; col = c.col; init = c.init;
+
+        c.msgs.forEach(m => {
+          if (m.date) {
+            box.appendChild(makeDateStamp(m.date));
+          } else {
+            box.appendChild(makeBubble({
+              side: m.s,
+              sender: m.s === 'them' ? m.sender : null,
+              content: m.content || null, 
+              text: m.t || null,
+              img: m.img || null,
+              timestamp: m.ts || ''
+            }));
+          }
+        });
+
+        inputRow.style.display = 'none';
       }
+
       document.getElementById('chat-name').innerHTML = name;
       const av = document.getElementById('chat-avatar');
-      av.innerHTML = init;
-      av.style.background = bg;
-      av.style.color = col;
+      av.innerHTML = init; av.style.background = bg; av.style.color = col;
       box.scrollTop = box.scrollHeight;
       document.getElementById('msgs-list-view').style.display = 'none';
       document.getElementById('chat-window').classList.add('open');
     }
-    function closeChat() { document.getElementById('chat-window').classList.remove('open'); document.getElementById('msgs-list-view').style.display = 'block'; currentChatId = null; }
 
+    function closeChat() {
+      document.getElementById('chat-window').classList.remove('open');
+      document.getElementById('msgs-list-view').style.display = 'block';
+      currentChatId = null;
+    }
+
+    // ── Send (guestbook only) ──
     async function sendMsg() {
-      const inp = document.getElementById('chat-input'); const txt = inp.value.trim(); if (!txt) return;
+      if (currentChatId !== GB) return;
+      const inp = document.getElementById('chat-input');
+      const txt = inp.value.trim(); if (!txt) return;
       inp.value = ''; inp.style.height = 'auto';
+      const gn = 'Anonymous';
+      const msg = await postGuestMsg(gn, txt);
       const box = document.getElementById('chat-messages');
-      if (currentChatId === GB) {
-        const gn = document.getElementById('guest-name').value.trim() || 'Anonymous';
-        const msg = await postGuestMsg(gn, txt);
-        const b = document.createElement('div'); b.className = 'bubble guest'; b.textContent = txt; box.appendChild(b);
-        const m2 = document.createElement('div'); m2.className = 'bubble-meta'; m2.textContent = gn + ' · ' + msg.time; box.appendChild(m2);
-        toast('Message saved! ✨');
-      } else {
-        const c = privateChats.find(x => x.id === currentChatId); c.msgs.push({ s: 'me', t: txt });
-        const b = document.createElement('div'); b.className = 'bubble me'; b.textContent = txt; box.appendChild(b);
-        setTimeout(() => {
-          const r = ['haha 😄', 'sounds good!', 'ok!', 'tell me more~', '👍', 'got it!', 'aww 🥰'][Math.floor(Math.random() * 7)];
-          const rb = document.createElement('div'); rb.className = 'bubble them'; rb.textContent = r; box.appendChild(rb);
-          c.msgs.push({ s: 'them', t: r }); box.scrollTop = box.scrollHeight;
-        }, 1200);
-      }
+      box.appendChild(makeBubble({ side: 'guest', sender: gn, text: txt, timestamp: msg.time }));
       box.scrollTop = box.scrollHeight;
+      toast('Message saved! ✨');
     }
 
     // ── PHOTOS — served from Cloudflare R2 via /api/media ──
@@ -1230,6 +1876,10 @@
       });
     }
 
+    function sortGallery() {
+
+    }
+
     function openPhoto(i) { viewerIndex = i; showViewer(); }
     function showViewer() {
       if (!gallery.length) return;
@@ -1241,7 +1891,7 @@
       } else {
         const img = document.createElement('img'); img.src = item.url; img.alt = item.name || item.key; md.appendChild(img);
       }
-      document.getElementById('photo-viewer-caption').textContent = (item.caption || item.name || item.key) + ' (' + (viewerIndex + 1) + '/' + gallery.length + ')';
+      document.getElementById('photo-viewer-caption').textContent = (item.caption);
       document.getElementById('photo-viewer').classList.add('open');
     }
     function closePhoto() {
@@ -1351,46 +2001,170 @@
     }
 
     // ── NOTES ──
-    const NK = 'handdrawn_notes_v1';
-    function getNotes() { try { return JSON.parse(localStorage.getItem(NK) || 'null') || [{ title: 'Grocery list 🛒', body: 'Eggs, milk, bread\nApples & bananas\nCoffee beans ☕', date: 'Today' }, { title: 'Ideas ✨', body: 'Build a hand-drawn UI\nLearn watercolour\nStart a sketchbook', date: 'Yesterday' }]; } catch { return []; } }
-    function setNotes(n) { localStorage.setItem(NK, JSON.stringify(n)); }
-    let editIdx = -1;
-    function buildNotesList() {
-      editIdx = -1; document.getElementById('notes-back-btn').onclick = goHome; document.getElementById('notes-header-title').textContent = 'Notes';
-      const notes = getNotes(); const c = document.getElementById('notes-content'); c.innerHTML = '';
-      notes.forEach((n, i) => {
-        const card = document.createElement('div'); card.className = 'note-card doodle-border';
-        card.innerHTML = `<div class="note-title">${esc(n.title)}</div><div class="note-body-prev">${esc(n.body.substring(0, 90))}${n.body.length > 90 ? '…' : ''}</div><div class="note-date">${n.date}</div>`;
-        card.onclick = () => openNE(i); c.appendChild(card);
-      });
-      const nb = document.createElement('div'); nb.className = 'new-note-btn'; nb.textContent = '+ New Note'; nb.onclick = () => openNE(-1); c.appendChild(nb);
-    }
-    function openNE(i) {
-      editIdx = i; const notes = getNotes(); const note = i >= 0 ? notes[i] : { title: '', body: '' };
-      document.getElementById('notes-header-title').textContent = i >= 0 ? 'Edit Note' : 'New Note';
-      document.getElementById('notes-back-btn').onclick = buildNotesList;
-      const c = document.getElementById('notes-content'); c.innerHTML = '';
-      const ed = document.createElement('div'); ed.className = 'note-editor';
-      ed.innerHTML = `<input class="note-ed-title" id="ned-title" value="${esc(note.title)}" placeholder="Title…"/>
-    <textarea class="note-ed-body" id="ned-body" placeholder="Start writing…">${esc(note.body)}</textarea>
-    <div class="note-actions">
-      <button class="note-act-btn" onclick="buildNotesList()">Cancel</button>
-      ${i >= 0 ? `<button class="note-act-btn" onclick="deleteNote(${i})">Delete</button>` : ''}
-      <button class="note-act-btn primary" onclick="saveNote()">Save</button>
-    </div>`;
-      c.appendChild(ed);
-    }
-    function saveNote() {
-      const title = document.getElementById('ned-title').value.trim() || 'Untitled';
-      const body = document.getElementById('ned-body').value.trim();
-      const notes = getNotes(); const ds = new Date().toLocaleDateString('en-MY', { month: 'short', day: 'numeric' });
-      if (editIdx >= 0) notes[editIdx] = { title, body, date: 'Just now' }; else notes.unshift({ title, body, date: ds });
-      setNotes(notes); buildNotesList();
-    }
-    function deleteNote(i) { if (!confirm('Delete this note?')) return; const notes = getNotes(); notes.splice(i, 1); setNotes(notes); buildNotesList(); }
-    function closeNoteEditor() { editIdx = -1; }
+    const notes = JSON.parse(document.getElementById('notes-data').textContent);
+    const container = document.getElementById('notes-content');
+
     function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
 
+    function buildNotesList() {
+      document.getElementById('notes-back-btn').onclick = goHome;
+      const container = document.getElementById('notes-content');
+      const header = document.getElementById('notes-header-title');
+
+      header.textContent = "Notes";
+      container.innerHTML = "";
+
+      const groups = {};
+
+      // 1. Group notes by month
+      notes.forEach((n, i) => {
+        const d = new Date(n.date);
+        const monthKey = d.toLocaleString('en-MY', {
+          month: 'long',
+          year: 'numeric'
+        });
+
+        if (!groups[monthKey]) groups[monthKey] = [];
+        groups[monthKey].push({ ...n, idx: i });
+      });
+
+      // 2. Render each month section
+      Object.keys(groups).forEach(month => {
+        const monthEl = document.createElement('div');
+        monthEl.className = 'note-month-header';
+        monthEl.textContent = month;
+        container.appendChild(monthEl);
+
+        // NOTES under that month
+        groups[month].forEach(n => {
+          const card = document.createElement('div');
+          card.className = 'note-card doodle-border';
+
+          card.innerHTML = `
+        <div class="note-title">${esc(n.title)}</div>
+        <div class="note-body-prev">
+          ${esc(n.body.substring(0, 90))}${n.body.length > 90 ? '…' : ''}
+        </div>
+      `;
+
+          card.onclick = () => openNote(n.idx);
+          container.appendChild(card);
+        });
+      });
+
+      // + New Note button
+      // const btn = document.createElement('div');
+      // btn.className = 'new-note-btn';
+      // btn.textContent = "+ New Note";
+      // btn.onclick = () => openNote(-1);
+      // container.appendChild(btn);
+      restoreScrollPosition();
+    }
+
+    function openNote(i) {
+      saveScrollPosition();
+      document.getElementById('notes-back-btn').onclick = buildNotesList;
+      const n = notes[i];
+
+      const fullDate = new Date(n.date).toLocaleDateString('en-MY', {
+        weekday: 'long',
+        day: 'numeric',
+        month: 'long',
+        year: 'numeric'
+      });
+
+      document.getElementById('notes-header-title').textContent = `${fullDate}`;
+
+      if (n.type === "note") {
+        container.innerHTML =
+          `<div class="note-full"><div class="note-title">${n.title}</div><div>${n.body.replace(/\n/g, '<br>')}</div></div>`;
+      }
+
+      if (n.type === "checklist") {
+        container.innerHTML =
+          `<div class="note-full doodle">
+      <div class="note-title">${esc(n.title)}</div>` +
+
+          n.items.map((item, i) => {
+
+            if (item.type === "header") {
+              return `<div class="check-header">${esc(item.text)}</div>`;
+            }
+
+            return `
+        <label style="display:flex; gap:8px; align-items:center;">
+          <input type="checkbox"
+            ${item.done ? "checked" : ""}
+            onchange="toggleCheck(${n.idx}, ${i})">
+          <span>${esc(item.text)}</span>
+        </label>
+      `;
+          }).join("") +
+
+          `</div>`;
+      }
+
+      //   container.innerHTML = `
+      // <div class="note-full">
+      //   <div class="note-title">${n.title}</div>
+      //   <div>${n.body.replace(/\n/g, '<br>')}</div>
+      // </div>`;
+    }
+
+    function saveScrollPosition() {
+      const el = document.getElementById("notes-content");
+      localStorage.setItem("notes-scroll", el.scrollTop);
+    }
+
+    function restoreScrollPosition() {
+      const y = localStorage.getItem("notes-scroll");
+      const el = document.getElementById("notes-content");
+      if (y !== null) {
+        el.scrollTo(0, parseInt(y));
+      }
+    }
+
+    // const NK = 'handdrawn_notes_v1';
+    // function getNotes() { try { return JSON.parse(localStorage.getItem(NK) || 'null') || [{ title: 'Grocery list 🛒', body: 'Eggs, milk, bread\nApples & bananas\nCoffee beans ☕', date: 'Today' }, { title: 'Ideas ✨', body: 'Build a hand-drawn UI\nLearn watercolour\nStart a sketchbook', date: 'Yesterday' }]; } catch { return []; } }
+    // function setNotes(n) { localStorage.setItem(NK, JSON.stringify(n)); }
+    // let editIdx = -1;
+    // function buildNotesList() {
+    //   editIdx = -1; document.getElementById('notes-back-btn').onclick = goHome; document.getElementById('notes-header-title').textContent = 'Notes';
+    //   const notes = getNotes(); const c = document.getElementById('notes-content'); c.innerHTML = '';
+    //   notes.forEach((n, i) => {
+    //     const card = document.createElement('div'); card.className = 'note-card doodle-border';
+    //     card.innerHTML = `<div class="note-title">${esc(n.title)}</div><div class="note-body-prev">${esc(n.body.substring(0, 90))}${n.body.length > 90 ? '…' : ''}</div><div class="note-date">${n.date}</div>`;
+    //     card.onclick = () => openNE(i); c.appendChild(card);
+    //   });
+    //   const nb = document.createElement('div'); nb.className = 'new-note-btn'; nb.textContent = '+ New Note'; nb.onclick = () => openNE(-1); c.appendChild(nb);
+    // }
+    // function openNE(i) {
+    //   editIdx = i; const notes = getNotes(); const note = i >= 0 ? notes[i] : { title: '', body: '' };
+    //   document.getElementById('notes-header-title').textContent = i >= 0 ? 'Notes' : 'New Note';
+    //   document.getElementById('notes-back-btn').onclick = buildNotesList;
+    //   const c = document.getElementById('notes-content'); c.innerHTML = '';
+    //   const ed = document.createElement('div'); ed.className = 'note-editor';
+    //   ed.innerHTML = `<input class="note-ed-title" id="ned-title" value="${esc(note.title)}" placeholder="Title…"/>
+    // <textarea class="note-ed-body" id="ned-body" placeholder="Start writing…">${esc(note.body)}</textarea>
+    // <div class="note-actions">
+    //   <button class="note-act-btn" onclick="buildNotesList()">Cancel</button>
+    //   ${i >= 0 ? `<button class="note-act-btn" onclick="deleteNote(${i})">Delete</button>` : ''}
+    //   <button class="note-act-btn primary" onclick="saveNote()">Save</button>
+    // </div>`;
+    //   c.appendChild(ed);
+    // }
+    // function saveNote() {
+    //   const title = document.getElementById('ned-title').value.trim() || 'Untitled';
+    //   const body = document.getElementById('ned-body').value.trim();
+    //   const notes = getNotes(); const ds = new Date().toLocaleDateString('en-MY', { month: 'short', day: 'numeric' });
+    //   if (editIdx >= 0) notes[editIdx] = { title, body, date: 'Just now' }; else notes.unshift({ title, body, date: ds });
+    //   setNotes(notes); buildNotesList();
+    // }
+    // function deleteNote(i) { if (!confirm('Delete this note?')) return; const notes = getNotes(); notes.splice(i, 1); setNotes(notes); buildNotesList(); }
+    // function closeNoteEditor() { editIdx = -1; }
+    // function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
+
+    buildNotesList();
     buildMsgThread();
   </script>
 </body>

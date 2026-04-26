@@ -145,7 +145,7 @@
 
 .doodle input[type="checkbox"] {
   border-width: 6px 6px 6px 6px;
-  border-image: url(checkbox.svg) 6 6 6 6 stretch stretch;
+  border-image: url(../images/checkbox.svg) 6 6 6 6 stretch stretch;
 }
 
 .doodle input[type="radio"], .doodle-round {
