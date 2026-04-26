@@ -42,7 +42,7 @@
       width: 100%;
       height: 100%;
       overflow: hidden;
-      background: #fef9f0;
+      background: #ffffff;
       font-family: 'TrilHandwriting';
       touch-action: manipulation;
     }
@@ -51,8 +51,8 @@
       position: fixed;
       inset: 0;
       z-index: 0;
-      background: #fef9f0;
-      background-image: linear-gradient(rgba(180, 160, 120, .07) 1px, transparent 1px), linear-gradient(90deg, rgba(180, 160, 120, .07) 1px, transparent 1px);
+      background: #ffffff;
+      /* background-image: linear-gradient(rgba(180, 160, 120, .07) 1px, transparent 1px), linear-gradient(90deg, rgba(180, 160, 120, .07) 1px, transparent 1px); */
       background-size: 36px 36px;
     }
 
@@ -73,6 +73,7 @@
 
     /* HOME */
     #home {
+      transform: scale(1.2);
       display: flex;
       position: absolute;
       inset: 0;
@@ -165,7 +166,7 @@
     .app-screen {
       position: absolute;
       inset: 0;
-      background: #fefcf5;
+      background: #ffffff;
       display: none;
       flex-direction: column;
       overflow: hidden;
@@ -180,7 +181,7 @@
       align-items: center;
       padding: clamp(13px, 2.4vh, 22px) 20px clamp(10px, 1.8vh, 16px);
       /* border-bottom: 2.5px solid #d4c4a0; */
-      background: #fef9f0;
+      background: #ffffff;
       gap: 14px;
       flex-shrink: 0;
     }
@@ -191,7 +192,7 @@
       color: #6b5a3e;
       cursor: pointer;
       padding: 5px 14px;
-      background: #fff8e8;
+      background: #ffffff;
       transition: background .15s;
       white-space: nowrap;
       display: flex;
@@ -224,7 +225,7 @@
     }
 
     .app-content::-webkit-scrollbar-thumb {
-      background: #d4c4a0;
+      background: #ffffff;
       border-radius: 4px;
     }
 
@@ -236,14 +237,21 @@
       padding: clamp(14px, 2.4vh, 20px) 16px;
       border-radius: 20px;
       /* border: 2px solid #d4c4a0; */
-      background: #fffdf5;
+      background: #ffffff;
       cursor: pointer;
       transition: background .15s;
       margin-bottom: 12px;
     }
 
     .msg-contact:hover {
-      background: #fff8dc;
+      background: #ffffff;
+    }
+
+    .emoji {
+      height: 2em;
+      width: 2em;
+      object-fit: contain;
+      vertical-align: middle;
     }
 
     .avatar {
@@ -257,7 +265,7 @@
       font-size: clamp(18px, 3vw, 24px);
       font-weight: 700;
       flex-shrink: 0;
-      border: 2.5px solid rgba(0, 0, 0, .1);
+      border: 2.5px solid #000000;
     }
 
     .contact-name {
@@ -282,7 +290,7 @@
       flex-direction: column;
       position: absolute;
       inset: 0;
-      background: #fefcf5;
+      background: #ffffff;
     }
 
     .chat-window.open {
@@ -295,7 +303,7 @@
       gap: 14px;
       padding: clamp(13px, 2.2vh, 20px) 18px;
       /* border-bottom: 2px solid #d4c4a0; */
-      background: #fef9f0;
+      background: #ffffff;
       flex-shrink: 0;
     }
 
@@ -317,34 +325,56 @@
     }
 
     .bubble.them {
-      background: #e8e0cc;
-      border: 2px solid #c8b890;
-      color: #2d2416;
+      background: #ffffff;
+      /* border: 2px solid #c8b890; */
+      color: #000000;
       align-self: flex-start;
       border-bottom-left-radius: 4px;
     }
 
     .bubble.me {
-      background: #4a7c59;
-      border: 2px solid #3a6045;
-      color: #fff;
+      background: #ffffff;
+      /* border: 2px solid #3a6045; */
+      color: #000000;
       align-self: flex-end;
       border-bottom-right-radius: 4px;
     }
 
     .bubble.guest {
-      background: #d4e8ff;
-      border: 2px solid #94b8e0;
+      background: #ffffff;
+      /* border: 2px solid #94b8e0; */
       color: #1a3050;
       align-self: flex-start;
-      border-bottom-left-radius: 4px;
+    }
+
+    .bubble-sender {
+      font-family: 'TrilHandwriting';
+      font-size: clamp(11px, 1.8vw, 14px);
+      color: #000000;
+      margin-bottom: 3px;
+      padding-left: 4px;
     }
 
     .bubble-meta {
       font-size: clamp(11px, 1.8vw, 14px);
-      color: #a09070;
+      color: #000000;
       margin-top: 3px;
       align-self: flex-start;
+    }
+
+    .bubble-meta.them {
+      background: #ffffff;
+      /* border: 2px solid #c8b890; */
+      color: #000000;
+      align-self: flex-start;
+    }
+
+    .bubble-meta.me {
+      background: #ffffff;
+      /* border: 2px solid #3a6045; */
+      color: #000000;
+      align-self: flex-end;
+      border-bottom-right-radius: 4px;
     }
 
     .name-row {
@@ -361,7 +391,7 @@
       padding: 9px 18px;
       font-family: 'TrilHandwriting';
       font-size: clamp(14px, 2.2vw, 17px);
-      background: #fffdf5;
+      background: #ffffff;
       color: #2d2416;
       outline: none;
       width: 200px;
@@ -374,23 +404,23 @@
     }
 
     .chat-input-row {
-      display: flex;
+      display: none;
       gap: 10px;
       padding: clamp(10px, 1.8vh, 16px) 18px;
-      border-top: 2px solid #d4c4a0;
-      background: #fef9f0;
+      /* border-top: 2px solid #d4c4a0; */
+      background: #ffffff;
       flex-shrink: 0;
       align-items: flex-end;
     }
 
     .chat-input {
       flex: 1;
-      border: 2px solid #c4a870;
+      /* border: 2px solid #c4a870; */
       border-radius: 26px;
       padding: clamp(10px, 1.8vh, 15px) 18px;
       font-family: 'TrilHandwriting';
       font-size: clamp(15px, 2.5vw, 19px);
-      background: #fffdf5;
+      background: #ffffff;
       color: #2d2416;
       outline: none;
       resize: none;
@@ -399,13 +429,13 @@
     }
 
     .send-btn {
-      background: #4a7c59;
-      border: none;
+      background: #ffffff;
+      /* border: none; */
       border-radius: 50%;
       width: clamp(44px, 7vw, 58px);
       height: clamp(44px, 7vw, 58px);
       cursor: pointer;
-      color: #fff;
+      /* color: #fff; */
       font-size: clamp(20px, 3.5vw, 28px);
       display: flex;
       align-items: center;
@@ -416,8 +446,8 @@
     /* PHOTOS */
     .photo-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(clamp(120px, 20vw, 200px), 1fr));
-      gap: 9px;
+      grid-template-columns: repeat(3, minmax(clamp(120px, 20vw, 200px), 1fr));
+      gap: 1vw;
     }
 
     .photo-cell {
@@ -697,7 +727,7 @@
 
     /* NOTES */
     .note-card {
-      background: #fffde8;
+      background: #ffffff;
       /* border: 2px solid #d4c490; */
       border-radius: 18px;
       padding: clamp(14px, 2.4vh, 20px) clamp(16px, 3vw, 22px);
@@ -713,30 +743,30 @@
       left: 44px;
       top: 0;
       bottom: 0;
-      border-left: 1px solid #e8d8a0;
+      /* border-left: 1px solid #e8d8a0; */
     }
 
     .note-card:hover {
-      background: #fff8c0;
+      background: #ffffff;
     }
 
     .note-title {
       font-family: 'TrilHandwriting';
       font-size: clamp(22px, 3.8vw, 32px);
       font-weight: 700;
-      color: #2d2416;
+      color: #000000;
     }
 
     .note-body-prev {
       font-size: clamp(14px, 2.4vw, 19px);
-      color: #7a6a4e;
+      color: #000000;
       margin-top: 5px;
       line-height: 1.5;
     }
 
     .note-date {
       font-size: clamp(12px, 2vw, 15px);
-      color: #b0a080;
+      color: #000000;
       margin-top: 7px;
     }
 
@@ -745,19 +775,19 @@
       align-items: center;
       justify-content: center;
       padding: 18px;
-      border: 2.5px dashed #c4a870;
+      border: 2.5px dashed #000000;
       border-radius: 18px;
-      background: #fffdf5;
+      background: #ffffff;
       cursor: pointer;
       font-family: 'TrilHandwriting';
       font-size: clamp(15px, 2.5vw, 20px);
-      color: #8a7a5e;
+      color: #000000;
       transition: background .15s;
       margin-top: 6px;
     }
 
     .new-note-btn:hover {
-      background: #fff8dc;
+      background: #ffffff;
     }
 
     .note-editor {
@@ -768,13 +798,13 @@
 
     .note-ed-title {
       border: none;
-      border-bottom: 2px solid #d4c490;
+      border-bottom: 2px solid #000000;
       font-family: 'TrilHandwriting';
       font-size: clamp(26px, 4.5vw, 40px);
       font-weight: 700;
       padding: clamp(14px, 2.4vh, 20px) 18px;
       background: transparent;
-      color: #2d2416;
+      color: #000000;
       outline: none;
       flex-shrink: 0;
     }
@@ -786,7 +816,7 @@
       font-size: clamp(16px, 2.7vw, 22px);
       padding: clamp(14px, 2.4vh, 20px) 18px;
       background: transparent;
-      color: #3d2e1a;
+      color: #000000;
       outline: none;
       resize: none;
       line-height: 2.15;
@@ -903,7 +933,7 @@
             <img class="back-btn-img" id="back-btn-img" src="assets/images/back2.png">
           </div>
           <div class="avatar" id="chat-avatar" style="background:#d4f0d8;color:#3a7a4a;">M</div>
-          <div class="app-title-h" id="chat-name" style="font-size:clamp(20px,3.5vw,30px);">Mum</div>
+          <div class="app-title-h" id="chat-name" style="font-size:clamp(20px,3.5vw,35px);">Mum</div>
         </div>
         <div class="doodle">
           <hr>
@@ -913,11 +943,14 @@
           <input class="name-input" id="guest-name" placeholder="Your name…" maxlength="30" />
           <span class="gb-label">sign your message ✏️</span>
         </div>
-        <div class="chat-input-row">
-          <textarea class="chat-input" id="chat-input" placeholder="Type a message…" rows="1"
+        <div class="doodle">
+          <hr>
+        </div>
+        <div class="chat-input-row" id="chat-input-row">
+          <textarea class="chat-input doodle-border" id="chat-input" placeholder="Type a message…" rows="1"
             oninput="this.style.height='auto';this.style.height=Math.min(this.scrollHeight,100)+'px'"
             onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendMsg();}"></textarea>
-          <button class="send-btn" onclick="sendMsg()">↑</button>
+          <button class="send-btn doodle-round" onclick="sendMsg()">↑</button>
         </div>
       </div>
     </div>
@@ -1020,16 +1053,41 @@
     }
 
     // ── MESSAGES ──
+    // const privateChats = [
+    //   {
+    //     id: 't-family', name: 'The T Family <img class="emoji" src="assets/images/sunglass_emoji.png"> <img class="emoji" src="assets/images/heart_emoji.png">', bg: '#ffffff', col: '#000000', init: '<img class="avatar" src="assets/images/family_pic.png">',
+    //     msgs: [{ s: 'them', t: 'Hey sweetheart! 👋', m: '14 Apr 04:47 pm' }, { s: 'them', t: 'Did you eat yet? 🍱', m: '14 Apr 04:48 pm' }, { s: 'me', t: 'Yes mum lol 😅', m: '14 Apr 04:50 pm' }, { s: 'them', t: 'Good! Love you ❤️', m: '14 Apr 04:51 pm' }]
+    //   },
+    //   {
+    //     id: 'amy', name: 'Amy', bg: '#ffffff', col: '#000000', init: '<img class="avatar" src="assets/images/friend_pic.png">',
+    //     msgs: [{ s: 'me', t: 'u coming tmr?', m: '14 Apr 04:47 pm' }, { s: 'them', t: 'yeah for sure 👍', m: '14 Apr 04:47 pm' }, { s: 'them', t: 'haha ok ok see u tmr', m: '14 Apr 04:47 pm' }]
+    //   },
+    // ];
+
     const privateChats = [
-      {
-        id: 't-family', name: 'The T Family 😎💕', bg: '#d4f0d8', col: '#3a7a4a', init: '<img class="avatar" src="assets/images/family_pic.png">',
-        msgs: [{ s: 'them', t: 'Hey sweetheart! 👋' }, { s: 'them', t: 'Did you eat yet? 🍱' }, { s: 'me', t: 'Yes mum lol 😅' }, { s: 'them', t: 'Good! Love you ❤️' }]
-      },
-      {
-        id: 'amy', name: 'Amy', bg: '#d4e8ff', col: '#2a60c8', init: '<img class="avatar" src="assets/images/friend_pic.png">',
-        msgs: [{ s: 'me', t: 'u coming tmr?' }, { s: 'them', t: 'yeah for sure 👍' }, { s: 'them', t: 'haha ok ok see u tmr' }]
-      },
-    ];
+  {
+    id: 't-family', name: 'The T Family <img class="emoji" src="assets/images/sunglass_emoji.png"> <img class="emoji" src="assets/images/heart_emoji.png">', bg: '#ffffff', col: '#000000', init: '<img class="avatar" src="assets/images/family_pic.png">',
+    msgs: [
+      { s:'them', sender:'Mum', t:'Hey sweetheart! 👋', ts:'9:02 AM' },
+      { s:'them', sender:'Mum', t:'Did you eat yet? 🍱', ts:'9:03 AM' },
+      { s:'me',                 t:'Yes mum lol 😅',      ts:'9:15 AM' },
+      { s:'them', sender:'Mum', t:'Good! Love you ❤️',   ts:'9:16 AM' },
+      { s:'me',                 t:'Love you too! 😊',    ts:'9:20 AM' },
+      { s:'them', sender:'Mum', t:'Come home soon okay', ts:'9:21 AM' },
+    ]
+  },
+  {
+    id: 'amy', name: 'Amy', bg: '#ffffff', col: '#000000', init: '<img class="avatar" src="assets/images/friend_pic.png">',
+    msgs: [
+      { s:'me',                   t:'u coming tmr?',            ts:'2:30 PM' },
+      { s:'them', sender:'Jamie', t:'yeah for sure 👍',         ts:'2:45 PM' },
+      { s:'me',                   t:'sick, meet at the usual?', ts:'2:46 PM' },
+      { s:'them', sender:'Jamie', t:'yep!! 7pm?',               ts:'2:47 PM' },
+      { s:'me',                   t:'perfect 🙌',               ts:'2:48 PM' },
+      { s:'them', sender:'Jamie', t:'haha ok ok see u tmr',     ts:'2:49 PM' },
+    ]
+  },
+];
 
     const GB = 'guestbook';
     let currentChatId = null;
@@ -1061,7 +1119,7 @@
 
     function buildMsgThread() {
       const w = document.getElementById('msg-thread'); w.innerHTML = '';
-      const all = [...privateChats, { id: GB, name: 'Dear Home', bg: '#ffd4e8', col: '#a03060', init: '<img class="avatar" src="assets/images/dear_home.png">', isGuest: true }];
+      const all = [...privateChats, { id: GB, name: 'Dear Home', bg: '#ffffff', col: '#000000', init: '<img class="avatar" src="assets/images/dear_home.png">', isGuest: true }];
       all.forEach(c => {
         const prev = c.isGuest ? 'Loading…' : c.msgs[c.msgs.length - 1].t;
         const d = document.createElement('div'); d.className = 'msg-contact doodle-border';
@@ -1087,18 +1145,18 @@
         box.innerHTML = '<div style="text-align:center;padding:12px 16px;font-size:clamp(13px,2.2vw,17px);color:#8a7a5e;background:#fff8f0;border-radius:14px;margin-bottom:10px;line-height:1.6;">Leave a message for everyone to see! 🌸</div>';
         const msgs = await fetchGuestMsgs();
         msgs.forEach(m => {
-          const b = document.createElement('div'); b.className = 'bubble guest'; b.textContent = m.t; box.appendChild(b);
+          const b = document.createElement('div'); b.className = 'bubble guest doodle-border'; b.textContent = m.t; box.appendChild(b);
           const meta = document.createElement('div'); meta.className = 'bubble-meta'; meta.textContent = (m.name || 'Anonymous') + ' · ' + m.time; box.appendChild(meta);
         });
         document.getElementById('name-row').style.display = 'none';
         document.getElementById('chat-input').placeholder = 'Write your message…';
       } else {
         const c = privateChats.find(x => x.id === id); name = c.name; bg = c.bg; col = c.col; init = c.init;
-        c.msgs.forEach(m => { const b = document.createElement('div'); b.className = 'bubble ' + m.s; b.textContent = m.t; box.appendChild(b); });
+        c.msgs.forEach(message => { const b = document.createElement('div'); b.className = 'bubble doodle-border ' + message.s; b.textContent = message.t; box.appendChild(b); const meta = document.createElement('div'); meta.className = 'bubble-meta ' + message.s; meta.textContent = message.m; box.appendChild(meta); });
         document.getElementById('name-row').style.display = 'none';
         document.getElementById('chat-input').placeholder = 'Type a message…';
       }
-      document.getElementById('chat-name').textContent = name;
+      document.getElementById('chat-name').innerHTML = name;
       const av = document.getElementById('chat-avatar');
       av.innerHTML = init;
       av.style.background = bg;

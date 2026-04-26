@@ -11,7 +11,10 @@
   color: #3c3c3c;
 }
 
-.doodle input, .doodle textarea, .doodle table, .doodle img {
+.doodle input,
+.doodle textarea,
+.doodle table,
+.doodle img {
   max-width: 100%;
 }
 
@@ -37,19 +40,24 @@
   display: inline-block;
 }
 
-.doodle fieldset, .doodle textarea {
+.doodle fieldset,
+.doodle textarea {
   border-style: solid;
   border-width: 10px 10px 10px 10px;
   border-image: url(../images/border.svg) 10 10 10 10 stretch stretch;
 }
 
-.doodle .border, .doodle-border {
+.doodle .border,
+.doodle-border {
   border-style: solid;
   border-width: 10px 10px 10px 10px;
   border-image: url(../images/button.svg) 10 10 10 10 stretch stretch;
 }
 
-.doodle button, .doodle input, .doodle select, .doodle input[type="file"]::file-selector-button {
+.doodle button,
+.doodle input,
+.doodle select,
+.doodle input[type="file"]::file-selector-button {
   border-style: solid;
   border-width: 10px 10px 10px 10px;
   border-image: url(../images/button.svg) 10 10 10 10 stretch stretch;
@@ -60,7 +68,7 @@
 }
 
 .doodle input[type="color"] {
-  min-height: 1.5em;    
+  min-height: 1.5em;
 }
 
 .doodle hr {
@@ -121,7 +129,10 @@
   padding: 0px;
 }
 
-.doodle button, .doodle textarea, .doodle input, .doodle select {
+.doodle button,
+.doodle textarea,
+.doodle input,
+.doodle select {
   background-color: unset;
   font-family: 'Short Stack', cursive;
   font-size: 1em;
@@ -137,12 +148,13 @@
   border-image: url(checkbox.svg) 6 6 6 6 stretch stretch;
 }
 
-.doodle input[type="radio"] {
+.doodle input[type="radio"], .doodle-round {
   border-width: 16px 16px 16px 16px;
-  border-image: url(radio.svg) 16 16 16 16 stretch stretch;
+  border-image: url(../images/radio.svg) 16 16 16 16 stretch stretch;
 }
 
-.doodle input[type="checkbox"], .doodle input[type="radio"] {
+.doodle input[type="checkbox"],
+.doodle input[type="radio"] {
   -webkit-appearance: none;
   appearance: none;
   outline: 0;
@@ -154,18 +166,21 @@
   align-items: center;
 }
 
-.doodle input[type="checkbox"]:after, .doodle input[type="radio"]:after {
+.doodle input[type="checkbox"]:after,
+.doodle input[type="radio"]:after {
   font-size: 1.25em;
   content: " ";
   margin-bottom: -0.25em;
 }
 
-.doodle input[type="checkbox"]:disabled:after, .doodle input[type="radio"]:disabled:after {
+.doodle input[type="checkbox"]:disabled:after,
+.doodle input[type="radio"]:disabled:after {
   content: "-";
   color: grey;
 }
 
-.doodle input[type="checkbox"]:checked:after, .doodle input[type="radio"]:checked:after {
+.doodle input[type="checkbox"]:checked:after,
+.doodle input[type="radio"]:checked:after {
   content: "*";
 }
 
@@ -177,7 +192,10 @@
   color: #3c3c3c;
 }
 
-.doodle button:focus-visible, .doodle textarea:focus-visible, .doodle input:focus-visible, .doodle select:focus-visible {
+.doodle button:focus-visible,
+.doodle textarea:focus-visible,
+.doodle input:focus-visible,
+.doodle select:focus-visible {
   outline-offset: -8px;
   outline: 2px dashed #3c3c3c;
   /* outline: transparent;
