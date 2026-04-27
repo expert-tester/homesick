@@ -8,13 +8,12 @@
 
 .doodle {
   background-color: #FDF7F1;
-  color: #3c3c3c;
+  color: #000000;
 }
 
 .doodle input,
 .doodle textarea,
-.doodle table,
-.doodle img {
+.doodle table {
   max-width: 100%;
 }
 
@@ -27,7 +26,7 @@
 }
 
 .doodle a {
-  color: #1c1c1c;
+  color: #000000;
   font-weight: bold;
 }
 
@@ -54,7 +53,6 @@
   border-image: url(../images/button.svg) 10 10 10 10 stretch stretch;
 }
 
-.doodle button,
 .doodle input,
 .doodle select,
 .doodle input[type="file"]::file-selector-button {
@@ -109,13 +107,6 @@
   vertical-align: top;
 }
 
-.doodle img {
-  border-radius: 3px;
-  border-style: solid;
-  border-width: 3px 3px 3px 3px;
-  border-image: url(../images/button.svg) 3 3 3 3 stretch stretch;
-}
-
 .doodle select {
   -webkit-appearance: none;
   appearance: none;
@@ -134,13 +125,12 @@
 .doodle input,
 .doodle select {
   background-color: unset;
-  font-family: 'Short Stack', cursive;
-  font-size: 1em;
-  color: #3c3c3c;
+  font-family: 'TrilHandwriting';
+  color: #000000;
 }
 
 .doodle button:disabled {
-  color: grey;
+  color: #000000;
 }
 
 .doodle input[type="checkbox"] {
@@ -159,8 +149,8 @@
   appearance: none;
   outline: 0;
   background: transparent;
-  width: 1.5em;
-  height: 1.5em;
+  width: 2vw;
+  height: 2vw;
   display: inline-flex;
   justify-content: center;
   align-items: center;
@@ -168,7 +158,7 @@
 
 .doodle input[type="checkbox"]:after,
 .doodle input[type="radio"]:after {
-  font-size: 1.25em;
+  font-size: 2vw;
   content: " ";
   margin-bottom: -0.25em;
 }
@@ -176,12 +166,13 @@
 .doodle input[type="checkbox"]:disabled:after,
 .doodle input[type="radio"]:disabled:after {
   content: "-";
-  color: grey;
+  color: #000000;
 }
 
 .doodle input[type="checkbox"]:checked:after,
 .doodle input[type="radio"]:checked:after {
   content: "*";
+  color: #000000;
 }
 
 .doodle input[type="file"]::file-selector-button {
@@ -189,15 +180,5 @@
   font-size: 0.8em;
   font-size: 1em;
   background-color: unset;
-  color: #3c3c3c;
-}
-
-.doodle button:focus-visible,
-.doodle textarea:focus-visible,
-.doodle input:focus-visible,
-.doodle select:focus-visible {
-  outline-offset: -8px;
-  outline: 2px dashed #3c3c3c;
-  /* outline: transparent;
-  filter: drop-shadow(0 0 3px #4d90fe) brightness(1.1) saturate(1.2); */
+  color: #000000;
 }

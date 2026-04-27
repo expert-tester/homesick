@@ -56,15 +56,6 @@
       background-size: 36px 36px;
     }
 
-    #wallpaper::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(ellipse at 25% 15%, rgba(255, 220, 160, .35) 0%, transparent 55%),
-        radial-gradient(ellipse at 80% 85%, rgba(180, 220, 255, .25) 0%, transparent 50%),
-        radial-gradient(ellipse at 60% 40%, rgba(255, 200, 220, .15) 0%, transparent 40%);
-    }
-
     #root {
       position: fixed;
       inset: 0;
@@ -86,13 +77,20 @@
       transition: opacity .3s, transform .3s;
     }
 
+    .date-time-wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      gap: 80px;
+    }
+
     .clock-time {
       font-family: 'TrilHandwriting';
       font-size: clamp(64px, 12vw, 110px);
       font-weight: 700;
       color: #000000;
       line-height: 1;
-      text-shadow: 3px 3px 0 rgba(180, 140, 60, .18);
     }
 
     .clock-date {
@@ -112,7 +110,7 @@
     }
 
     .clock-countdown .flag {
-      width: 80px;
+      width: 3vw;
       height: auto;
       object-fit: contain;
     }
@@ -180,7 +178,6 @@
       display: flex;
       align-items: center;
       padding: 18px 16px;
-      /* border-bottom: 2.5px solid #d4c4a0; */
       background: #ffffff;
       gap: 14px;
       flex-shrink: 0;
@@ -249,8 +246,8 @@
     }
 
     .emoji {
-      height: 2em;
-      width: 2em;
+      height: 3vw;
+      width: 3vw;
       object-fit: contain;
       vertical-align: middle;
     }
@@ -305,7 +302,6 @@
       align-items: center;
       gap: 1vw;
       padding: 18px 16px;
-      /* border-bottom: 2px solid #d4c4a0; */
       background: #ffffff;
       flex-shrink: 0;
     }
@@ -410,8 +406,8 @@
     }
 
     .bubble-wrap.wrap-guest {
-      align-self: flex-start;
-      align-items: flex-start;
+      align-self: flex-end;
+      align-items: flex-end;
     }
 
     /* Sender name above bubble (them only) */
@@ -457,7 +453,7 @@
     /* Timestamp below bubble, bottom-right aligned */
     .bubble-ts {
       font-family: 'TrilHandwriting';
-      font-size: clamp(10px, 1.6vw, 13px);
+      font-size: clamp(10px, 1vw, 28px);
       color: #000000;
       margin-top: 3px;
       padding-right: 4px;
@@ -526,19 +522,18 @@
       display: flex;
       gap: 10px;
       padding: clamp(10px, 1.8vh, 16px) 18px;
-      /* border-top: 2px solid #d4c4a0; */
       background: #ffffff;
       flex-shrink: 0;
-      align-items: flex-end;
+      align-items: center;
     }
 
     .chat-input {
       flex: 1;
-      border: 2px solid #c4a870;
-      border-radius: 26px;
+      /* border: 2px solid #c4a870; */
+      /* border-radius: 26px; */
       padding: clamp(10px, 1.8vh, 15px) 18px;
       font-family: 'TrilHandwriting';
-      font-size: clamp(15px, 2.5vw, 19px);
+      font-size: clamp(15px, 2.5vw, 28px);
       background: #ffffff;
       color: #000000;
       outline: none;
@@ -547,9 +542,13 @@
       line-height: 1.4;
     }
 
+    .chat-input:focus {
+      outline: none;
+    }
+
     .send-btn {
       background: #ffffff;
-      /* border: none; */
+      border: none;
       border-radius: 50%;
       width: clamp(44px, 7vw, 58px);
       height: clamp(44px, 7vw, 58px);
@@ -560,6 +559,12 @@
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
+    }
+
+    .send-btn img {
+      width: 4vw;
+      height: 4vw;
+      display: block;
     }
 
     /* PHOTOS */
@@ -1012,8 +1017,18 @@
     <!-- HOME -->
     <div id="home">
       <div style="text-align:center;">
-        <div class="clock-time" id="clock-time">9:41</div>
-        <div class="clock-date" id="clock-date">Saturday, April 18</div>
+        <div class="date-time-wrapper" id="date-time-wrapper">
+          <div class="uk-time">
+            <div class="clock-date">United Kingdom</div>
+            <div class="clock-time" id="clock-uk-time">9:41</div>
+            <div class="clock-date" id="clock-uk-date">Saturday, April 18</div>
+          </div>
+          <div class="mls-time">
+            <div class="clock-date">Malaysia</div>
+            <div class="clock-time" id="clock-mls-time">9:41</div>
+            <div class="clock-date" id="clock-mls-date">Saturday, April 18</div>
+          </div>
+        </div>
         <div class="clock-countdown" id="clock-countdown">
           <span class="clock-countdown-text" id="clock-countdown-text"> days in </span>
           <img class="flag" id="flag" src="assets/images/uk.png">
@@ -1063,7 +1078,7 @@
           <div class="avatar" id="chat-avatar" style="background:#d4f0d8;color:#3a7a4a;">M</div>
           <div class="app-title-h" id="chat-name" style="font-size:clamp(20px,3.5vw,30px);">Mum</div>
           <div class="chat-call-btns">
-            <div class="call-btn" title="Video Call" onclick="toast('📹 Video calling… (decorative)')">
+            <div class="call-btn" title="Video Call">
               <!-- <img class="call-btn-img" src="assets/images/video_call.png"> -->
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round"
                 stroke-linejoin="round" width="80%" height="80%">
@@ -1071,7 +1086,7 @@
                 <path d="M15 9l5-2v10l-5-2V9z" />
               </svg>
             </div>
-            <div class="call-btn" title="Voice Call" onclick="toast('📞 Calling… (decorative)')">
+            <div class="call-btn" title="Voice Call">
               <img class="call-btn-img" src="assets/images/voice_call.png">
               <!-- <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                 stroke-linejoin="round" width="60%" height="60%">
@@ -1093,10 +1108,11 @@
           <hr>
         </div>
         <div class="chat-input-row doodle" id="chat-input-row" style="display:none;">
-          <textarea class="chat-input" id="chat-input" placeholder="Write your message…" rows="1"
-            oninput="this.style.height='auto';this.style.height=Math.min(this.scrollHeight,100)+'px'"
+          <textarea class="chat-input" id="chat-input" placeholder="Write your message…" rows="5"
             onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendMsg();}"></textarea>
-          <button class="send-btn doodle-round" onclick="sendMsg()">↑</button>
+          <button class="send-btn" onclick="sendMsg()">
+            <img src="assets/images/send_message.png">
+          </button>
         </div>
 
         <!-- private chats: read-only notice -->
@@ -1169,13 +1185,13 @@
     "body": "27/4 SIS Exhibition\n1/5 PPIM Portfolio Website\n1/5 PPIM Reflective Essay\n6/5 Media Production Project\n6/5 Media Production Project Diary\n11/5 Media Production Reflective Essay\n11/5 Photography Portfolio\n15/5 SIS Reflective Essay",
     "items": [
       { "text": "SIS Exhibition - 27/4", "done": false },
-      { "text": "PPIM Portfolio Website - 1/5", "done": false },
-      { "text": "PPIM Reflective Essay - 1/5", "done": false },
-      { "text": "Media Production Project - 6/5", "done": false },
-      { "text": "Media Production Project Diary - 6/5", "done": false },
-      { "text": "Media Production Reflective Essay - 11/5", "done": false },
-      { "text": "Photography Portfolio - 11/5", "done": false },
-      { "text": "SIS Reflective Essay - 15/5", "done": false }
+      { "text": "PPIM Portfolio Website - 1/5", "done": true },
+      { "text": "PPIM Reflective Essay - 1/5", "done": true },
+      { "text": "Media Production Project - 6/5", "done": true },
+      { "text": "Media Production Project Diary - 6/5", "done": true },
+      { "text": "Media Production Reflective Essay - 11/5", "done": true },
+      { "text": "Photography Portfolio - 11/5", "done": true },
+      { "text": "SIS Reflective Essay - 15/5", "done": true }
     ],
     "date": "2026-04-13T17:26"
   },
@@ -1224,7 +1240,7 @@
   {
     "type": "note",
     "title": "buy!!!",
-    "body": "drying rack\nmug\nteaspoon\ntoilet scrub\nfloor mat\nhangers\npot\npan\nutensils",
+    "body": "1. drying rack\n2. mug\n3. teaspoon\n4. toilet scrub\n5. floor mat\n6. hangers\n7. pot\n8. pan\n9. utensils",
     "date": "2025-09-19T17:18"
   },
   {
@@ -1233,26 +1249,26 @@
     "body": "documents\nvisa\npassport\ncas\nidentity card\n\nnecessities\nheattech\nwarm clothes\nundergarment\nmedicine\nskincare\nspare glasses\nbedsheet\ntowel\nelectronics\ncamera\nlaptop\nipad\ncharger",
     "items": [
       { "type": "header", "text": "documents" },
-      { "text": "visa", "done": false },
-      { "text": "passport", "done": false },
-      { "text": "cas", "done": false },
-      { "text": "identity card", "done": false },
+      { "text": "visa", "done": true },
+      { "text": "passport", "done": true },
+      { "text": "cas", "done": true },
+      { "text": "identity card", "done": true },
       { "type": "header", "text": "\n" },
       { "type": "header", "text": "necessities" },
-      { "text": "heattech", "done": false },
-      { "text": "warm clothes", "done": false },
-      { "text": "undergarment", "done": false },
-      { "text": "medicine", "done": false },
-      { "text": "skincare", "done": false },
-      { "text": "spare glasses", "done": false },
-      { "text": "bedsheet", "done": false },
-      { "text": "towel", "done": false },
+      { "text": "heattech", "done": true },
+      { "text": "warm clothes", "done": true },
+      { "text": "undergarment", "done": true },
+      { "text": "medicine", "done": true },
+      { "text": "skincare", "done": true },
+      { "text": "spare glasses", "done": true },
+      { "text": "bedsheet", "done": true },
+      { "text": "towel", "done": true },
       { "type": "header", "text": "" },
       { "type": "header", "text": "electronics" },
-      { "text": "camera", "done": false },
-      { "text": "laptop", "done": false },
-      { "text": "ipad", "done": false },
-      { "text": "charger", "done": false }
+      { "text": "camera", "done": true },
+      { "text": "laptop", "done": true },
+      { "text": "ipad", "done": true },
+      { "text": "charger", "done": true }
     ],
     "date": "2025-09-07T02:08"
   }
@@ -1263,13 +1279,48 @@
     // ── CLOCK ──
     const DAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
     const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-    function updateClock() {
-      const n = new Date(); let h = n.getHours(), m = n.getMinutes();
-      const ap = h >= 12 ? 'PM' : 'AM'; h = h % 12 || 12;
-      document.getElementById('clock-time').textContent = h + ':' + String(m).padStart(2, '0') + ' ' + ap;
-      document.getElementById('clock-date').textContent = DAYS[n.getDay()] + ', ' + MONTHS[n.getMonth()] + ' ' + n.getDate();
+
+    function formatTime(date, timeZone) {
+      const time = new Intl.DateTimeFormat('en-GB', {
+        timeZone,
+        hour: 'numeric',
+        minute: '2-digit',
+        hour12: true
+      }).format(date);
+
+      const d = new Intl.DateTimeFormat('en-GB', {
+        timeZone,
+        weekday: 'long',
+        day: 'numeric',
+        month: 'long'
+      }).formatToParts(date);
+
+      const weekday = d.find(x => x.type === 'weekday').value;
+      const day = d.find(x => x.type === 'day').value;
+      const month = d.find(x => x.type === 'month').value;
+
+      return {
+        time,
+        date: `${weekday}, ${month} ${day}`
+      };
     }
-    updateClock(); setInterval(updateClock, 10000);
+
+    function updateClock() {
+      const now = new Date();
+
+      // 🇲🇾 Malaysia (MYT)
+      const mls = formatTime(now, 'Asia/Kuala_Lumpur');
+      document.getElementById('clock-mls-time').textContent = mls.time;
+      document.getElementById('clock-mls-date').textContent = mls.date;
+
+      // 🇬🇧 UK (GMT/BST automatically handled)
+      const uk = formatTime(now, 'Europe/London');
+      document.getElementById('clock-uk-time').textContent = uk.time;
+      document.getElementById('clock-uk-date').textContent = uk.date;
+    }
+
+    setInterval(updateClock, 1000);
+    updateClock();
 
     function updateDays() {
       const startDate = new Date("2025-09-16");
@@ -1319,7 +1370,7 @@
 
     const privateChats = [
       {
-        id: 'family', name: 'Family', bg: '#fff0f0', col: '#a85c5c', init: '<img class="avatar" src="assets/images/family_avatar.png">',
+        id: 'family', name: 'The T Family <img class="emoji" src="assets/images/sunglass_emoji.png"> <img class="emoji" src="assets/images/heart_emoji.png">', bg: '#ffffff', col: '#ffffff', init: '<img class="avatar" src="assets/images/family_avatar.png">',
         msgs: [
           // ── Oct 6, 2025 ──
           { date: 'Mon, 6 Oct 2025' },
@@ -1484,7 +1535,7 @@
         ]
       },
       {
-        id: 'amy', name: 'Amy', bg: '#000000', col: '#ffffff', init: '<img class="avatar" src="assets/images/friend_avatar.png">',
+        id: 'amy', name: 'Amy', bg: '#ffffff', col: '#ffffff', init: '<img class="avatar" src="assets/images/friend_avatar.png">',
         msgs: [
           // ── Sep 14, 2025 ──
           { date: 'Sun, 14 Sep 2025' },
@@ -1711,7 +1762,7 @@
       const w = document.getElementById('msg-thread'); w.innerHTML = '';
       const all = [
         ...privateChats,
-        { id: GB, name: 'Guestbook 📖', bg: '#ffffff', col: '#000000', init: '<img class="avatar" src="assets/images/dear_home_avatar.png">', isGuest: true }
+        { id: GB, name: 'Dear Home,', bg: '#ffffff', col: '#000000', init: '<img class="avatar" src="assets/images/dear_home_avatar.png">', isGuest: true }
       ];
       all.forEach(c => {
         // Last preview: skip date-only entries
@@ -1778,7 +1829,7 @@
         const msgs = await fetchGuestMsgs();
         msgs.forEach(m => {
           box.appendChild(makeBubble({
-            side: 'guest', sender: 'Anonymous',
+            side: 'guest', sender: '',
             text: m.t, timestamp: m.time
           }));
         });
@@ -1796,7 +1847,7 @@
             box.appendChild(makeBubble({
               side: m.s,
               sender: m.s === 'them' ? m.sender : null,
-              content: m.content || null, 
+              content: m.content || null,
               text: m.t || null,
               img: m.img || null,
               timestamp: m.ts || ''
@@ -2093,7 +2144,7 @@
 
             return `
         <label style="display:flex; gap:8px; align-items:center;">
-          <input type="checkbox"
+          <input type="checkbox" disabled
             ${item.done ? "checked" : ""}
             onchange="toggleCheck(${n.idx}, ${i})">
           <span>${esc(item.text)}</span>
