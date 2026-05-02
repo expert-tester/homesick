@@ -106,7 +106,8 @@
       align-items: center;
       justify-content: center;
       font-family: 'TrilHandwriting';
-      font-size: clamp(16px, 2.9vw, 24px);
+      font-size: 30px;
+      margin: 20px 0px 25px 0px;
     }
 
     .clock-countdown .flag {
@@ -250,6 +251,15 @@
       width: 3vw;
       object-fit: contain;
       vertical-align: middle;
+      position: relative;
+      /* needed for z-index */
+    }
+
+    .emoji+.emoji {
+      margin-left: -1vw;
+      /* pull the next emoji to the left */
+      z-index: 2;
+      /* make it appear on top */
     }
 
     .avatar {
@@ -300,7 +310,7 @@
     .chat-header {
       display: flex;
       align-items: center;
-      gap: 1vw;
+      gap: 30px;
       padding: 18px 16px;
       background: #ffffff;
       flex-shrink: 0;
@@ -562,8 +572,8 @@
     }
 
     .send-btn img {
-      width: 4vw;
-      height: 4vw;
+      width: 80px;
+      height: 80px;
       display: block;
     }
 
@@ -711,13 +721,14 @@
     }
 
     .player-controls {
+      display: none;
       position: absolute;
       bottom: 0;
       left: 0;
       right: 0;
       background: linear-gradient(transparent, rgba(20, 14, 6, .88));
       padding: 28px 18px 16px;
-      display: flex;
+      /* display: flex; */
       flex-direction: column;
       gap: 12px;
       border-radius: 0 0 18px 18px;
@@ -740,7 +751,7 @@
 
     .progress-fill {
       height: 100%;
-      background: #f5c842;
+      background: #ffffff;
       border-radius: 20px;
       transition: width .1s linear;
       position: relative;
@@ -826,8 +837,8 @@
       width: 14px;
       height: 14px;
       border-radius: 50%;
-      background: #f5c842;
-      border: 2px solid #c4a870;
+      background: #ffffff;
+      border: 2px solid #ffffff;
       cursor: pointer;
     }
 
@@ -847,6 +858,26 @@
       opacity: 0;
       transition: opacity 0.25s ease;
       z-index: 10;
+    }
+
+    .gallery-month-group {
+      margin-bottom: 28px;
+    }
+
+    .gallery-month-label {
+      font-family: 'TrilHandwriting';
+      font-size: clamp(18px, 3.5vw, 26px);
+      font-weight: 700;
+      color: #000000;
+      padding: 6px 4px 10px;
+      border-bottom: 2px dashed #000000;
+      margin-bottom: 10px;
+    }
+
+    .gallery-month-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(clamp(120px, 20vw, 200px), 1fr));
+      gap: 9px;
     }
 
     /* NOTES */
@@ -1038,21 +1069,21 @@
       <div class="icons-row">
         <div class="app-icon-wrap" onclick="openApp('messages')">
           <div class="app-icon">
-            <img src="assets/images/messages.png" width="160" height="160">
+            <img src="assets/images/messages.png" width="200" height="200">
           </div>
           <div class="app-label">Messages</div>
         </div>
 
         <div class="app-icon-wrap" onclick="openApp('photos')">
           <div class="app-icon">
-            <img src="assets/images/photos.png" width="160" height="160">
+            <img src="assets/images/photos.png" width="200" height="200">
           </div>
           <div class="app-label">Photos</div>
         </div>
 
         <div class="app-icon-wrap" onclick="openApp('notes')">
           <div class="app-icon">
-            <img src="assets/images/notes.png" width="160" height="160">
+            <img src="assets/images/notes.png" width="200" height="200">
           </div>
           <div class="app-label">Notes</div>
         </div>
@@ -1184,14 +1215,14 @@
     "title": "DEADLINES",
     "body": "27/4 SIS Exhibition\n1/5 PPIM Portfolio Website\n1/5 PPIM Reflective Essay\n6/5 Media Production Project\n6/5 Media Production Project Diary\n11/5 Media Production Reflective Essay\n11/5 Photography Portfolio\n15/5 SIS Reflective Essay",
     "items": [
-      { "text": "SIS Exhibition - 27/4", "done": false },
-      { "text": "PPIM Portfolio Website - 1/5", "done": true },
-      { "text": "PPIM Reflective Essay - 1/5", "done": true },
-      { "text": "Media Production Project - 6/5", "done": true },
-      { "text": "Media Production Project Diary - 6/5", "done": true },
-      { "text": "Media Production Reflective Essay - 11/5", "done": true },
-      { "text": "Photography Portfolio - 11/5", "done": true },
-      { "text": "SIS Reflective Essay - 15/5", "done": true }
+      { "text": "SIS Exhibition - 27/4", "done": true },
+      { "text": "PPIM Portfolio Website - 1/5", "done": false },
+      { "text": "PPIM Reflective Essay - 1/5", "done": false },
+      { "text": "Media Production Project - 6/5", "done": false },
+      { "text": "Media Production Project Diary - 6/5", "done": false },
+      { "text": "Media Production Reflective Essay - 11/5", "done": false },
+      { "text": "Photography Portfolio - 11/5", "done": false },
+      { "text": "SIS Reflective Essay - 15/5", "done": false }
     ],
     "date": "2026-04-13T17:26"
   },
@@ -1285,7 +1316,7 @@
         timeZone,
         hour: 'numeric',
         minute: '2-digit',
-        hour12: true
+        hour12: false
       }).format(date);
 
       const d = new Intl.DateTimeFormat('en-GB', {
@@ -1370,7 +1401,7 @@
 
     const privateChats = [
       {
-        id: 'family', name: 'The T Family <img class="emoji" src="assets/images/sunglass_emoji.png"> <img class="emoji" src="assets/images/heart_emoji.png">', bg: '#ffffff', col: '#ffffff', init: '<img class="avatar" src="assets/images/family_avatar.png">',
+        id: 'family', name: 'The T Family <img class="emoji" src="assets/images/sunglass_emoji.png"> <img class="emoji" style="margin-bottom:3px" src="assets/images/heart_emoji.png">', bg: '#ffffff', col: '#ffffff', init: '<img class="avatar" src="assets/images/family_avatar.png">',
         msgs: [
           // ── Oct 6, 2025 ──
           { date: 'Mon, 6 Oct 2025' },
@@ -1812,16 +1843,15 @@
   gap: 8px;
 
   padding: 10px 14px;
-  font-size: clamp(13px,2.2vw,17px);
+  font-size: 22px;
   color: #000000;
 
   background: #ffffff;
-  border: 1.5px solid #000000;
-  border-radius: 12px;
 
   box-shadow: 0 4px 10px rgba(0,0,0,0.08);
   margin-bottom: 12px;
 `;
+        note.className = "doodle-border"
         note.innerHTML = `Leave an anonymous message to someone who’s home to you and/or is far away from you now ❤️`;
 
         box.appendChild(note);
@@ -1905,30 +1935,88 @@
     }
 
     function renderGallery() {
-      document.getElementById('photo-loading').style.display = 'none';
       const grid = document.getElementById('photo-grid');
       const empty = document.getElementById('empty-photos');
+      const loading = document.getElementById('photo-loading');
+
       grid.innerHTML = '';
-      if (!gallery.length) { empty.style.display = 'block'; grid.style.display = 'none'; return; }
-      empty.style.display = 'none'; grid.style.display = 'grid';
-      gallery.forEach((item, i) => {
-        const cell = document.createElement('div'); cell.className = 'photo-cell doodle-border';
-        if (item.isVideo) {
-          const vid = document.createElement('video');
-          vid.src = item.url; vid.muted = true; vid.playsInline = true;
-          vid.addEventListener('mouseenter', () => vid.play());
-          vid.addEventListener('mouseleave', () => { vid.pause(); vid.currentTime = 0; });
-          cell.appendChild(vid);
-          const badge = document.createElement('div'); badge.className = 'vid-badge'; badge.textContent = '▶ Video'; cell.appendChild(badge);
+      loading.style.display = 'none';
+
+      if (!gallery.length) {
+        empty.style.display = 'block';
+        grid.style.display = 'none';
+        return;
+      }
+
+      empty.style.display = 'none';
+      grid.style.display = 'block';
+
+      // ── Group items by "Month Year" label ──
+      // Items with no sortDate go into an "Undated" group at the end.
+      const MONTH_NAMES = [
+        'January', 'February', 'March', 'April', 'May', 'June',
+        'July', 'August', 'September', 'October', 'November', 'December'
+      ];
+
+      const groups = new Map(); // key: "April 2025", value: [item, item, ...]
+
+      gallery.forEach(item => {
+        let label;
+        if (item.sortDate) {
+          const d = new Date(item.sortDate);
+          label = MONTH_NAMES[d.getMonth()] + ' ' + d.getFullYear();
         } else {
-          const img = document.createElement('img'); img.src = item.url; img.alt = item.name || item.key; img.loading = 'lazy'; cell.appendChild(img);
+          label = 'Undated';
         }
-        cell.onclick = () => openPhoto(i); grid.appendChild(cell);
+        if (!groups.has(label)) groups.set(label, []);
+        groups.get(label).push(item);
       });
-    }
 
-    function sortGallery() {
+      // Render each group
+      groups.forEach((items, label) => {
+        // Month heading
+        const heading = document.createElement('div');
+        heading.className = 'gallery-month-label';
+        heading.textContent = label;
+        grid.appendChild(heading);
 
+        // Grid of thumbnails for this month
+        const monthGrid = document.createElement('div');
+        monthGrid.className = 'gallery-month-grid';
+
+        items.forEach(item => {
+          // Find this item's index in the full gallery array for the viewer
+          const globalIndex = gallery.indexOf(item);
+
+          const cell = document.createElement('div');
+          cell.className = 'photo-cell';
+
+          if (item.isVideo) {
+            const vid = document.createElement('video');
+            vid.src = item.url; vid.muted = true; vid.playsInline = true;
+            vid.addEventListener('mouseenter', () => vid.play());
+            vid.addEventListener('mouseleave', () => { vid.pause(); vid.currentTime = 0; });
+            cell.appendChild(vid);
+            const badge = document.createElement('div');
+            badge.className = 'vid-badge'; badge.textContent = '▶ Video';
+            cell.appendChild(badge);
+          } else {
+            const img = document.createElement('img');
+            img.src = item.url; img.alt = item.caption; img.loading = 'lazy';
+            cell.appendChild(img);
+          }
+
+          cell.onclick = () => openPhoto(globalIndex);
+          monthGrid.appendChild(cell);
+        });
+
+        grid.appendChild(monthGrid);
+
+        // Spacer between groups
+        const spacer = document.createElement('div');
+        spacer.style.cssText = 'height:8px;';
+        grid.appendChild(spacer);
+      });
     }
 
     function openPhoto(i) { viewerIndex = i; showViewer(); }

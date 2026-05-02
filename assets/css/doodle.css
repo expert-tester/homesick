@@ -7,7 +7,7 @@
 }
 
 .doodle {
-  background-color: #FDF7F1;
+  background-color: #ffffff;
   color: #000000;
 }
 
@@ -70,9 +70,12 @@
 }
 
 .doodle hr {
+  display: block;
   border-style: solid;
-  border-width: 0px 3px 6px 3px;
-  border-image: url(../images/hr.svg) 0 3 6 3 stretch stretch;
+  margin: 0;
+  width: 100%;
+  border-width: 0px 0px 6px 0px;
+  border-image: url(../images/hr.svg) 0 0 6 0 stretch stretch;
 }
 
 .doodle blockquote {
@@ -94,7 +97,7 @@
 }
 
 .doodle table thead {
-  border-bottom: 3px solid #bbb;
+  border-bottom: 3px solid #fff;
 }
 
 .doodle table caption {
@@ -138,7 +141,8 @@
   border-image: url(../images/checkbox.svg) 6 6 6 6 stretch stretch;
 }
 
-.doodle input[type="radio"], .doodle-round {
+.doodle input[type="radio"],
+.doodle-round {
   border-width: 16px 16px 16px 16px;
   border-image: url(../images/radio.svg) 16 16 16 16 stretch stretch;
 }
@@ -149,8 +153,8 @@
   appearance: none;
   outline: 0;
   background: transparent;
-  width: 2vw;
-  height: 2vw;
+  width: 40px;
+  height: 40px;
   display: inline-flex;
   justify-content: center;
   align-items: center;
@@ -158,20 +162,20 @@
 
 .doodle input[type="checkbox"]:after,
 .doodle input[type="radio"]:after {
-  font-size: 2vw;
+  font-size: 30px;
   content: " ";
-  margin-bottom: -0.25em;
+  /* margin-bottom: -0.35em; */
 }
 
 .doodle input[type="checkbox"]:disabled:after,
 .doodle input[type="radio"]:disabled:after {
-  content: "-";
+  content: " ";
   color: #000000;
 }
 
 .doodle input[type="checkbox"]:checked:after,
 .doodle input[type="radio"]:checked:after {
-  content: "*";
+  content: "✓";
   color: #000000;
 }
 
